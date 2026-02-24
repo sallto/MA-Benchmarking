@@ -1,0 +1,27 @@
+#!/bin/bash
+set -euo pipefail
+set -x
+compile=
+args=("$@")
+n=${#args[@]}
+timetrace=
+tracepath=
+for ((i=0; i<n; ++i)); do
+    case ${args[i]} in
+        -o) output=${args[i+1]}; unset args[i]; unset args[i+1]; ((++i));;
+        -c) compile=1;;
+        -emit-llvm) compile=0;;
+		--time-trace) timetrace="--time-trace=${args[i+1]}"; tracepath="${args[i+1]}"; unset args[i]; unset args[i+1]; ((++i));;
+		--time-trace-file) timetrace="--time-trace --time-trace-granularity=0 --time-trace-file=${args[i+1]}"; tracepath="${args[i+1]}";  unset args[i]; unset args[i+1]; ((++i));;
+    esac
+done
+if [ -n "$timetrace" ]; then
+timetrace="${timetrace}/$output.json"
+mkdir -p $(dirname "${tracepath}/$output.json")
+fi
+if [ -z $compile ]; then
+    "${args[@]}" -o "$output"
+else
+    "${args[@]}" -emit-llvm -o - | $TPDE_LLC $timetrace -o "$output"
+fi
+

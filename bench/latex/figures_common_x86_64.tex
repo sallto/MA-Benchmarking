@@ -1,0 +1,417 @@
+\documentclass[conference]{./IEEEtran}
+\pagestyle{plain}
+
+\usepackage{booktabs} % For formal tables
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{microtype}
+\usepackage{balance}
+\usepackage{float}
+\usetikzlibrary{calc}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+% \usetikzlibrary{shapes}
+\usetikzlibrary{fit}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{shadows}
+
+\pgfplotsset{compat=1.15}
+\usetikzlibrary{backgrounds,shapes.arrows,shapes.symbols,patterns,positioning,decorations.pathreplacing,calc,shapes.geometric,shapes.multipart,graphs,fit,arrows.meta}
+\usepgfplotslibrary{groupplots}
+
+\definecolor{tumblue}{RGB}{0,101,189}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\definecolor{tumsec1}{RGB}{0,82,147}
+\definecolor{tumsec2}{RGB}{0,51,89}
+\definecolor{tumbeige}{RGB}{218,215,203}
+\definecolor{tumorange}{RGB}{227,114,34}
+\definecolor{tumgreen}{RGB}{162,173,0}
+\definecolor{tumlblue}{RGB}{152,198,234}
+\definecolor{tummidblue}{RGB}{100,160,200}
+
+\definecolor{TLlightblue}{RGB}{119,170,221}
+\definecolor{TLlightcyan}{RGB}{153,221,255}
+\definecolor{TLmint}{RGB}{68,187,153}
+\definecolor{TLpear}{RGB}{187,204,51}
+\definecolor{TLolive}{RGB}{170,170,0}
+\definecolor{TLlightyellow}{RGB}{238,221,136}
+\definecolor{TLorange}{RGB}{238,136,102}
+\definecolor{TLpink}{RGB}{255,170,187}
+\definecolor{TLpalegray}{RGB}{221,221,221}
+\definecolor{Fuchsia}{RGB}{140,54,140}
+\definecolor{TBblue}{RGB}{68,119,170}
+\definecolor{TBcyan}{RGB}{102,204,238}
+\definecolor{TBgreen}{RGB}{34,136,51}
+\definecolor{TByellow}{RGB}{204,187,68}
+\definecolor{TBred}{RGB}{238,102,119}
+\definecolor{TBpurple}{RGB}{170,51,119}
+\definecolor{TBgrey}{RGB}{187,187,187}
+
+\pgfplotsset{
+  nodes near coords boundcheck/.style={
+    %
+    % Nodes near coords only for bars that exceed ymax.
+    visualization depends on={rawy \as \rawy},
+    nodes near coords={\ifdim\rawy pt>\pgfkeysvalueof{/pgfplots/ymax}pt\pgfmathprintnumber\rawy\else\fi},
+    nodes near coords style={font=\normalsize},
+    restrict y to domain*={
+    \pgfkeysvalueof{/pgfplots/ymin}:\pgfkeysvalueof{/pgfplots/ymax}
+    },
+    %
+  },
+  nodes near coords boundcheckx/.style={
+    %
+    % Nodes near coords only for bars that exceed ymax.
+    visualization depends on={rawx \as \rawx},
+    nodes near coords={\ifdim\rawx pt>\pgfkeysvalueof{/pgfplots/xmax}pt\pgfmathprintnumber\rawx\else\fi},
+    nodes near coords style={font=\small,/pgf/number format/.cd,precision=1},
+    restrict x to domain*={
+    \pgfkeysvalueof{/pgfplots/xmin}:\pgfkeysvalueof{/pgfplots/xmax}
+    },
+    %
+  },
+}
+
+\begin{document}
+
+\section{Wasmtime}
+
+\begin{figure}[H]
+% \centering
+\resizebox{\linewidth}{!}{
+% \begin{subfigure}[b]{.48\linewidth}
+  \begin{tikzpicture}
+    \begin{groupplot}[
+    group style={group size=2 by 1,horizontal sep=10pt,},
+      xbar=0pt,
+      xmajorgrids=true,
+      symbolic y coords = {
+        bz2,
+        pulldown-cmark,
+        spidermonkey,
+        correlation,
+        covariance,
+        2mm,
+        3mm,
+        atax,
+        bicg,
+        doitgen,
+        mvt,
+        gemm,
+        gemver,
+        gesummv,
+        symm,
+        syr2k,
+        syrk,
+        trmm,
+        cholesky,
+        durbin,
+        gramschmidt,
+        lu,
+        ludcmp,
+        trisolv,
+        deriche,
+        floyd-warshall,
+        nussinov,
+        adi,
+        fdtd-2d,
+        heat-3d,
+        jacobi-1d,
+        jacobi-2d,
+        seidel-2d,
+        geomean
+      },
+      enlarge y limits=0.02,
+      ytick=data,
+      ytick pos=bottom,
+      y dir=reverse,
+      % yticklabels={,,},
+      %yticklabels={},
+      cycle list={%
+        TLpear!30!black,fill=TLpear,mark=none,postaction={pattern=crosshatch dots}\\%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+        TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+        TLpink!30!black,fill=TLpink,mark=none\\%
+        TLlightyellow!30!black,fill=TLlightyellow,mark=none\\%
+        TLlightcyan!30!black,fill=TLlightcyan,mark=none\\%
+        TLolive!30!black,fill=TLolive,mark=none\\%
+        TLmint!30!black,fill=TLmint,mark=none\\%
+        TLpear!30!black,fill=TLpear,mark=none\\%
+        TLpalegray!30!black,fill=TLpalegray,mark=none\\%
+        TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+      },
+      % xticklabel style={rotate=30,anchor=east,align=center,font=\tiny},
+      % yticklabel style={font=\footnotesize},
+      legend style={thin,font=\footnotesize,legend columns=1,inner ysep=0.5pt, inner xsep=2pt,reverse legend,
+        cells={align=left},legend cell align=left,
+        at={(1,.52)},
+        % xshift=1pt,
+        anchor=south east,},
+        legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.1cm,0.15cm); },
+      width=5.5cm,
+      height=13cm,
+      % nodes near coords boundcheck,
+      % every node near coord/.append style={font=\scriptsize},
+      ]
+
+      \nextgroupplot[
+        title={Compile-time speedup},
+        bar width=2.5pt,
+        xtick distance=2,
+        xmin=0,
+        xmax=12,
+      ]
+
+      \addplot table[y=bench,x=ct,col sep=comma] {bench-res/res-wasmtime-cfa};
+      \addplot table[y=bench,x=ct,col sep=comma] {bench-res/res-wasmtime-tpde};
+      \addplot table[y=bench,x=ct,col sep=comma] {bench-res/res-wasmtime-winch};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed,line width=1pt] (A |- O1) -- (A |- O2);
+
+      \nextgroupplot[
+        title={Run-time speedup},
+        bar width=2.5pt,
+        yticklabels={},
+        % xticklabels={,,,0.5,,1},
+        xtick distance=0.25,
+        xmax=1.4,
+        xmin=0,
+      ]
+      \legend{
+        Cranelift\\ (Fast RA),
+        TPDE,
+        Winch
+      }
+
+      \addplot table[y=bench,x=rt,col sep=comma] {bench-res/res-wasmtime-cfa};
+      \addplot table[y=bench,x=rt,col sep=comma] {bench-res/res-wasmtime-tpde};
+      \addplot table[y=bench,x=rt,col sep=comma] {bench-res/res-wasmtime-winch};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed,line width=1pt] (A |- O1) -- (A |- O2);
+
+    \end{groupplot}
+  \end{tikzpicture}
+}
+
+  \caption{Compile- and Run-time speedup normalized to Cranelift (default regalloc) on Sightglass and PolyBench benchmarks.
+  Compile-time includes translation into CLIF and linking.}
+  \label{fig:cranelift:perf}
+\end{figure}
+
+\section{Umbra}
+
+\begin{figure}[H]
+\resizebox{\linewidth}{!}{
+  \begin{tikzpicture}
+    \begin{groupplot}[
+      group style={group size=2 by 2,horizontal sep=3ex,vertical sep=4ex,},
+      xbar,
+      xmin=0,
+      symbolic y coords = {
+        DirectEmit,
+        TPDE,
+        TPDE-LLVM,
+        LLVM-O0,
+        LLVM-Opt
+      },
+      ytick=data,
+      cycle list={%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+      },
+      yticklabel style={align=center,font=\footnotesize},
+      x label style={at={(axis description cs:0.5,1.1)},anchor=south},
+      % group/xlabels at=edge top,
+      group/yticklabels at=edge left,
+      group/xticklabels at=all,
+      width=5cm,
+      height=3cm,
+    ]
+
+    \nextgroupplot[
+      ylabel={x86-64},
+      xlabel={Run-time [s]},
+      xmax=1,
+      bar width=7pt,
+      nodes near coords boundcheckx,
+      nodes near coords={\pgfmathprintnumber\rawx},
+      every node near coord/.style={
+        /pgf/number format/precision=2,/pgf/number format/fixed,font=\footnotesize,
+      },
+    ]
+    \addplot+ table[x=rt,y=backend,col sep=comma] {bench-res/parsed-umbra-x86_64};
+
+    \nextgroupplot[
+      xlabel={Compile-time [s]},
+      xmax=3.1,
+      bar width=7pt,
+      nodes near coords boundcheckx,
+      nodes near coords={\pgfmathprintnumber\rawx},
+      every node near coord/.style={
+        /pgf/number format/precision=2,/pgf/number format/fixed,font=\footnotesize,
+      },
+    ]
+    \addplot+ table[x=ct,y=backend,col sep=comma] {bench-res/parsed-umbra-x86_64};
+
+    \end{groupplot}
+  \end{tikzpicture}
+}
+
+  \caption{Compile- and run-time accumulated over all TPC-DS queries (sf=1). Compile-time is code-generation time, excluding query optimization and Umbra IR construction.}
+\label{fig:umbra:perf}
+\end{figure}
+
+\section{LLVM TEST-SUITE}
+\begin{figure}[H]
+\resizebox{\linewidth}{!}{
+  \begin{tikzpicture}
+    \begin{groupplot}[
+    group style={group size=3 by 1,horizontal sep=7pt,},
+      xbar=0pt,
+      symbolic y coords = {
+		7zip,
+        ASCI-Purple,
+        ASC-Sequoia,
+        BitBench,
+        Bullet,
+        DOE-ProxyApps-C++/HACCKernels,
+        DOE-ProxyApps-C++/HPCCG,
+        DOE-ProxyApps-C++/PENNANT,
+        DOE-ProxyApps-C++/miniFE,
+        DOE-ProxyApps-C,
+        Fhourstones,
+        Fhourstones-3.1,
+        FreeBench,
+        llubenchmark,
+        mafft,
+        MallocBench,
+        McCat,
+        mediabench,
+        MiBench,
+        nbench,
+        NPB-serial,
+        Olden,
+        PAQ8p,
+        Prolangs-C++,
+        Prolangs-C,
+        Ptrdist,
+        Rodinia,
+        SciMark2-C,
+        sim,
+        tramp3d-v4,
+        Trimaran,
+        TSVC,
+        VersaBench,
+        geomean
+      },
+      y dir=reverse,
+      enlarge y limits=0.05,
+      ytick=data,
+      ytick pos=bottom,
+      cycle list={%
+        %TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+        TLlightyellow!30!black,fill=TLlightyellow,mark=none,postaction={pattern=north east lines}\\%
+        TLpink!30!black,fill=TLpink,mark=none\\%
+        TLlightyellow!30!black,fill=TLlightyellow,mark=none\\%
+        TLlightcyan!30!black,fill=TLlightcyan,mark=none\\%
+        TLolive!30!black,fill=TLolive,mark=none\\%
+        TLmint!30!black,fill=TLmint,mark=none\\%
+        TLpear!30!black,fill=TLpear,mark=none\\%
+        TLpalegray!30!black,fill=TLpalegray,mark=none\\%
+        TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+      },
+      legend style={font=\small,legend columns=-1,reverse legend,draw=none,
+        at={(1,1)},yshift=6ex,
+        anchor=south east,},
+      legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.25cm,0.15cm); },
+      height=15.4cm,
+      every axis title/.style={anchor=south,at={(.5,1)},align=center},
+      ]
+
+      \nextgroupplot[
+        xmin=0,
+        xmax=34,
+        xmajorgrids=true,
+        xtick distance=5,
+        bar width=3pt,
+        width=4.2cm,
+        title={Compile-time\\Speedup},
+      ]
+
+	  \addplot table[y=benchmark,x=value,col sep=comma] {bench-res/parsed-test-suite-ct-x86_64};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A -| O1) -- (A -| O2);
+
+      \nextgroupplot[
+        xmax=1.2,
+        xmin=0,
+        xmajorgrids=true,
+        xtick distance=0.5,
+        bar width=3pt,
+        yticklabels={},
+        title={Run-time\\Speedup},
+        width=3.3cm,
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{llvm-rt}/\thisrow{tpde-rt},col sep=comma] {bench-res/parsed-test-suite-rt-text-x86_64};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A |- O1) -- (A |- O2);
+
+      \nextgroupplot[
+        xmax=1.7,
+        xmin=0,
+        xmajorgrids=true,
+        xtick distance=0.5,
+        bar width=3pt,
+        yticklabels={},
+        title={Code Size},
+        width=3.3cm,
+        nodes near coords boundcheckx,
+      ]
+
+	  \addplot table[y=benchmark,x expr=\thisrow{tpde-text}/\thisrow{llvm-text},col sep=comma] {bench-res/parsed-test-suite-rt-text-x86_64};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A |- O1) -- (A |- O2);
+
+      \legend{
+        TPDE x86-64
+      }
+
+    \end{groupplot}
+  \end{tikzpicture}
+}
+  \caption{Compile- and run-time speedup and code size normalized to LLVM \texttt{-O0} on the MultiSource benchmarks of the LLVM test-suite with unoptimized LLVM-IR.
+  Compile-time is back-end time, excluding front-end and required LLVM-IR passes.}
+\end{figure}
+

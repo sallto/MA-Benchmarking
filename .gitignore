@@ -1,0 +1,6 @@
+spec
+res-*
+db/
+tpcds-data/
+tpcds-kit/
+

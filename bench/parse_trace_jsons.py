@@ -1,0 +1,194 @@
+from collections import defaultdict
+import sys
+import json
+import glob
+
+eventmap = {
+"RunPass/AArch64 Assembly Printer": "LLVM_AsmPrinter",
+"RunPass/AArch64 Branch Targets": "LLVM_OtherPasses",
+"RunPass/AArch64 Instruction Selection": "LLVM_ISel",
+"RunPass/AArch64 Pointer Authentication": "LLVM_OtherPasses",
+"RunPass/AArch64 Stack Tagging": "LLVM_PreISel",
+"RunPass/AArch64 pseudo instruction expansion pass": "LLVM_OtherPasses",
+"RunPass/AArch64 sls hardening pass": "LLVM_OtherPasses",
+"RunPass/AArch64 speculation hardening pass": "LLVM_OtherPasses",
+"RunPass/AArch64O0PreLegalizerCombiner": "LLVM_ISel",
+"RunPass/AArch64PostLegalizerLowering": "LLVM_ISel",
+"RunPass/Analysis containing CSE Info": "LLVM_OtherPasses",
+"RunPass/Analysis for ComputingKnownBits": "LLVM_OtherPasses",
+"RunPass/Branch relaxation pass": "LLVM_OtherPasses",
+"RunPass/Dominator Tree Construction": "LLVM_OtherPasses",
+"RunPass/IRTranslator": "LLVM_ISel",
+"RunPass/Implement the 'patchable-function' attribute": "LLVM_OtherPasses",
+"RunPass/Insert CFI remember/restore state instructions": "LLVM_OtherPasses",
+"RunPass/InstructionSelect": "LLVM_ISel",
+"RunPass/Lazy Block Frequency Analysis": "LLVM_OtherPasses",
+"RunPass/Lazy Branch Probability Analysis": "LLVM_OtherPasses",
+"RunPass/Legalizer": "LLVM_ISel",
+"RunPass/Localizer": "LLVM_ISel",
+"RunPass/Natural Loop Information": "LLVM_OtherPasses",
+"RunPass/Optimization Remark Emitter": "LLVM_OtherPasses",
+"RunPass/RegBankSelect": "LLVM_ISel",
+"RunPass/ResetMachineFunction": "LLVM_OtherPasses",
+"RunPass/SME ABI Pass": "LLVM_PreISel",
+"RunPass/Workaround A53 erratum 835769 pass": "LLVM_OtherPasses",
+"RunPass/Expand large div/rem": "LLVM_PreISel",
+"RunPass/Expand large fp convert": "LLVM_PreISel",
+"RunPass/Expand Atomic instructions": "LLVM_PreISel",
+"RunPass/Lower AMX intrinsics": "LLVM_PreISel",
+"RunPass/Lower AMX type for load/store": "LLVM_PreISel",
+"RunPass/Module Verifier": "LLVM_PreISel",
+"RunPass/Lower Garbage Collection Instructions": "LLVM_PreISel",
+"RunPass/Shadow Stack GC Lowering": "LLVM_PreISel",
+"RunPass/Remove unreachable blocks from the CFG": "LLVM_PreISel",
+"RunPass/Instrument function entry/exit with calls to e.g. mcount() (post inlining)": "LLVM_PreISel",
+"RunPass/Scalarize Masked Memory Intrinsics": "LLVM_PreISel",
+"RunPass/Expand reduction intrinsics": "LLVM_PreISel",
+"RunPass/Expand indirectbr instructions": "LLVM_PreISel",
+"RunPass/Exception handling preparation": "LLVM_PreISel",
+"RunPass/Prepare callbr": "LLVM_PreISel",
+"RunPass/Safe Stack instrumentation pass": "LLVM_PreISel",
+"RunPass/Insert stack protectors": "LLVM_PreISel",
+"RunPass/Assignment Tracking Analysis": "LLVM_PreISel",
+"RunPass/X86 DAG->DAG Instruction Selection": "LLVM_ISel",
+"RunPass/X86 PIC Global Base Reg Initialization": "LLVM_ISel",
+"RunPass/Argument Stack Rebase": "LLVM_ISel",
+"RunPass/Finalize ISel and expand pseudo-instructions": "LLVM_ISel",
+"RunPass/Local Stack Slot Allocation": "LLVM_OtherPasses",
+"RunPass/X86 speculative load hardening": "LLVM_OtherPasses",
+"RunPass/X86 EFLAGS copy lowering": "LLVM_OtherPasses",
+"RunPass/X86 DynAlloca Expander": "LLVM_OtherPasses",
+"RunPass/Fast Tile Register Preconfigure": "LLVM_RA",
+"RunPass/Eliminate PHI nodes for register allocation": "LLVM_RA",
+"RunPass/Two-Address instruction pass": "LLVM_RA",
+"RunPass/Fast Register Allocator": "LLVM_RA",
+"RunPass/Fast Tile Register Configure": "LLVM_RA",
+"RunPass/X86 Lower Tile Copy": "LLVM_OtherPasses",
+"RunPass/Bundle Machine CFG Edges": "LLVM_OtherPasses",
+"RunPass/X86 FP Stackifier": "LLVM_OtherPasses",
+"RunPass/Remove Redundant DEBUG_VALUE analysis": "LLVM_OtherPasses",
+"RunPass/Fixup Statepoint Caller Saved": "LLVM_OtherPasses",
+"RunPass/Lazy Machine Block Frequency Analysis": "LLVM_OtherPasses",
+"RunPass/Machine Optimization Remark Emitter": "LLVM_OtherPasses",
+"RunPass/Prologue/Epilogue Insertion & Frame Finalization": "LLVM_OtherPasses",
+"RunPass/Post-RA pseudo instruction expansion pass": "LLVM_OtherPasses",
+"RunPass/X86 pseudo instruction expansion pass": "LLVM_OtherPasses",
+"RunPass/Insert KCFI indirect call checks": "LLVM_OtherPasses",
+"RunPass/Analyze Machine Code For Garbage Collection": "LLVM_OtherPasses",
+"RunPass/Insert fentry calls": "LLVM_OtherPasses",
+"RunPass/Insert XRay ops": "LLVM_OtherPasses",
+"RunPass/Implement the 'patchable-function' attribute": "LLVM_OtherPasses",
+"RunPass/X86 Indirect Branch Tracking": "LLVM_OtherPasses",
+"RunPass/X86 vzeroupper inserter": "LLVM_OtherPasses",
+"RunPass/Compressing EVEX instrs when possible": "LLVM_OtherPasses",
+"RunPass/X86 Discriminate Memory Operands": "LLVM_OtherPasses",
+"RunPass/X86 Insert Cache Prefetches": "LLVM_OtherPasses",
+"RunPass/X86 insert wait instruction": "LLVM_OtherPasses",
+"RunPass/Contiguously Lay Out Funclets": "LLVM_OtherPasses",
+"RunPass/Remove Loads Into Fake Uses": "LLVM_OtherPasses",
+"RunPass/StackMap Liveness Analysis": "LLVM_OtherPasses",
+"RunPass/Live DEBUG_VALUE analysis": "LLVM_OtherPasses",
+"RunPass/Machine Sanitizer Binary Metadata": "LLVM_OtherPasses",
+"RunPass/Stack Frame Layout Analysis": "LLVM_OtherPasses",
+"RunPass/X86 Speculative Execution Side Effect Suppression": "LLVM_OtherPasses",
+"RunPass/X86 Indirect Thunks": "LLVM_OtherPasses",
+"RunPass/X86 Return Thunks": "LLVM_OtherPasses",
+"RunPass/Check CFA info and insert CFI instructions if needed": "LLVM_OtherPasses",
+"RunPass/X86 Load Value Injection (LVI) Ret-Hardening": "LLVM_OtherPasses",
+"RunPass/Pseudo Probe Inserter": "LLVM_OtherPasses",
+"RunPass/Unpack machine instruction bundles": "LLVM_OtherPasses",
+"RunPass/X86 Assembly Printer": "LLVM_AsmPrinter",
+"RunPass/Free MachineFunction": "LLVM_OtherPasses",
+"RunPass/Local Stack Slot Allocation": "LLVM_PreRA",
+"RunPass/X86 speculative load hardening": "LLVM_PreRA",
+"RunPass/X86 EFLAGS copy lowering": "LLVM_PreRA",
+"RunPass/X86 DynAlloca Expander": "LLVM_PreRA",
+"RunPass/X86 Lower Tile Copy": "LLVM_PostRA",
+"RunPass/Bundle Machine CFG Edges": "LLVM_PostRA",
+"RunPass/X86 FP Stackifier": "LLVM_PostRA",
+"RunPass/Remove Redundant DEBUG_VALUE analysis": "LLVM_PostRA",
+"RunPass/Fixup Statepoint Caller Saved": "LLVM_PostRA",
+"RunPass/Lazy Machine Block Frequency Analysis": "LLVM_PostRA",
+"RunPass/Machine Optimization Remark Emitter": "LLVM_PostRA",
+"RunPass/Prologue/Epilogue Insertion & Frame Finalization": "LLVM_PostRA",
+"RunPass/Post-RA pseudo instruction expansion pass": "LLVM_PostRA",
+"RunPass/X86 pseudo instruction expansion pass": "LLVM_PostRA",
+"RunPass/Insert KCFI indirect call checks": "LLVM_PostRA",
+"RunPass/Analyze Machine Code For Garbage Collection": "LLVM_PostRA",
+"RunPass/Insert fentry calls": "LLVM_PostRA",
+"RunPass/Insert XRay ops": "LLVM_PostRA",
+"RunPass/Implement the 'patchable-function' attribute": "LLVM_PostRA",
+"RunPass/X86 Indirect Branch Tracking": "LLVM_PostRA",
+"RunPass/X86 vzeroupper inserter": "LLVM_PostRA",
+"RunPass/Compressing EVEX instrs when possible": "LLVM_PostRA",
+"RunPass/X86 Discriminate Memory Operands": "LLVM_PostRA",
+"RunPass/X86 Insert Cache Prefetches": "LLVM_PostRA",
+"RunPass/X86 insert wait instruction": "LLVM_PostRA",
+"RunPass/Contiguously Lay Out Funclets": "LLVM_PostRA",
+"RunPass/Remove Loads Into Fake Uses": "LLVM_PostRA",
+"RunPass/StackMap Liveness Analysis": "LLVM_PostRA",
+"RunPass/Live DEBUG_VALUE analysis": "LLVM_PostRA",
+"RunPass/Machine Sanitizer Binary Metadata": "LLVM_PostRA",
+"RunPass/Stack Frame Layout Analysis": "LLVM_PostRA",
+"RunPass/X86 Speculative Execution Side Effect Suppression": "LLVM_PostRA",
+"RunPass/X86 Indirect Thunks": "LLVM_PostRA",
+"RunPass/X86 Return Thunks": "LLVM_PostRA",
+"RunPass/Check CFA info and insert CFI instructions if needed": "LLVM_PostRA",
+"RunPass/X86 Load Value Injection (LVI) Ret-Hardening": "LLVM_PostRA",
+"RunPass/Pseudo Probe Inserter": "LLVM_PostRA",
+"RunPass/Unpack machine instruction bundles": "LLVM_PostRA",
+"RunPass/Free MachineFunction": "LLVM_FreeMF",
+"Total ExecuteCompiler": "total",
+"Total Frontend": "frontend",
+"Total Backend": "backend",
+"Total CodeGenPasses": "codegen",
+"Total TPDE": "codegen",
+"Total Compile": "codegen",
+"Total TPDE_Prepass": "prepass",
+"Total TPDE_Analysis": "analysis",
+"Total TPDE_CodeGen": "tpde_cg",
+"Total TPDE_EmitObj": "emit_obj",
+"Total TPDE_GlobalGen": "global_gen",
+}
+
+if len(sys.argv) != 5:
+    print('Usage: parse_trace_jsons.py <benchmarknum> <clang_build_dir> <tpde_build_dir> <llc_mode>')
+    exit(1)
+
+benchmark = sys.argv[1]
+clang_path = sys.argv[2]
+tpde_path = sys.argv[3]
+llc_mode = (sys.argv[4] == 'true')
+if llc_mode:
+    eventmap["Total OptModule"] = "codegen"
+
+def parse_jsons(folder_path):
+    res = defaultdict(float)
+    for filename in glob.glob(folder_path + '/**/*.json', recursive=True):
+        with open(filename) as f:
+            content = json.load(f)
+            for event in content['traceEvents']:
+                name = event["name"]
+                if name == "RunPass": name += "/" + event["args"]["detail"]
+                group = eventmap.get(name)
+                if not group and event["name"] == "RunPass":
+                    print("WARNING: unmapped pass", event["args"]["detail"])
+                    eventmap[name] = "LLVM_OtherPasses"
+                if group:
+                    res[group] += float(event["dur"])
+
+    return res
+
+for (ty, folder_path) in [('clang', clang_path), ('tpde', tpde_path)]:
+    res = []
+    for i in range(1, 6):
+        tmp_path = folder_path
+        if (tmp_path[-1] != '/'):
+            tmp_path += '/'
+        tmp_path += "time_trace." + str(i)
+        res.append(parse_jsons(tmp_path))
+
+    res.sort(key=lambda r: r["total"])
+    res = res[1:-1]
+    for k in sorted(res[0].keys()):
+        print(benchmark, k, ty, sum(r[k] for r in res) / len(res))

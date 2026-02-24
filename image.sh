@@ -1,0 +1,1 @@
+DOCKER_BUILDKIT=1 docker build --ssh default=$HOME/.ssh/id_ed25519 -t myimage .

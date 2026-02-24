@@ -1,0 +1,32 @@
+#!/bin/bash
+set -euo pipefail
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+compile=
+CLANGPP=$SCRIPT_DIR/llvm-18/clang++
+args=("$@")
+n=${#args[@]}
+for ((i=0; i<n; ++i)); do
+    case ${args[i]} in
+        -o) output=${args[i+1]}; unset args[i]; unset args[i+1]; ((++i));;
+        -c) compile=1;;
+        -emit-llvm) compile=0;;
+    esac
+done
+if [ -z $compile ]; then
+    $CLANGPP "$@"
+else
+    $CLANGPP "${args[@]}" -emit-llvm -o "$output.bc"
+	set +e
+	for ((i=0; i<5; ++i)); do
+	    tmp_dir=$(mktemp -d)
+	    trap "rm -r ${tmp_dir}" EXIT INT QUIT TERM
+        "${MLIR_CODEGEN:-/bench/mlir-codegen/mlir-codegen}" --time --fast --lib "${tmp_dir}" --runs=10 -o "$output" "$output.bc" > "$output.cptime"
+
+		# sometimes the codegen segfaults so just try again a couple times
+		if [ $? -eq 0 ]; then
+			break
+		fi
+    done
+fi
+
