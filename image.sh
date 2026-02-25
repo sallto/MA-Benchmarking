@@ -1,1 +1,1 @@
-DOCKER_BUILDKIT=1 docker build --ssh default=$HOME/.ssh/id_ed25519 -t myimage .
+DOCKER_BUILDKIT=1 docker build --ssh default=$HOME/.ssh/id_ed25519 --no-cache-filter tpde-src --build-arg CACHE_BUST=2 -t myimage .
