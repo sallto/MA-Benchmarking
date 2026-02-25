@@ -3,6 +3,7 @@ REPETITIONS=5
 ARCH=$(shell uname -m)
 LLVM_DIR=$(ROOT)/llvm
 TPDE_DIR=$(ROOT)/tpde
+TPDE_OLD_DIR=$(ROOT)/tpde-old
 
 # Prevent cleanup of stamp files. .NOTINTERMEDIATE is buggy on older make.
 .SECONDARY:
@@ -32,8 +33,10 @@ clean:
 	-$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-rt --expid=paper-tpde-rt --action trash intspeed
 	-$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-rt --expid=paper-clang-rt --action trash intspeed
 	rm -rf spec/result/
-	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_llvm
+	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_llvm_O0
+	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_llvm_O1
 	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_tpde
+	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_tpde_old
 	mkdir spec/result
 
 
@@ -48,11 +51,12 @@ testsuite/llvm-test-suite/build_%:
 
 latex/bench-res:
 	mkdir latex/bench-res
-	
-latex/bench-res/res-test-suite-ct-$(ARCH): | testsuite/llvm-test-suite/build_llvm_O0 testsuite/llvm-test-suite/build_llvm_O1 testsuite/llvm-test-suite/build_tpde latex/bench-res 
+
+latex/bench-res/res-test-suite-ct-$(ARCH): | testsuite/llvm-test-suite/build_llvm_O0 testsuite/llvm-test-suite/build_llvm_O1 testsuite/llvm-test-suite/build_tpde testsuite/llvm-test-suite/build_tpde_old latex/bench-res 
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(LLVM_DIR)/bin/llc --filetype=obj --relocation-model=pic -O0" ninja -C build_llvm_O0 -j 4
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(LLVM_DIR)/bin/llc --filetype=obj --relocation-model=pic -O1" ninja -C build_llvm_O1 -j 4
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(TPDE_DIR)/tpde-llvm/tpde-llc" ninja -C build_tpde -j 4
+	cd testsuite/llvm-test-suite; env TPDE_LLC="$(TPDE_OLD_DIR)/tpde-llvm/tpde-llc" ninja -C build_tpde_old -j 4
 	cd testsuite/llvm-test-suite; ../parse_traces.sh | tee $(ROOT)/$@
 
 latex/bench-res/res-test-suite-rt-text-$(ARCH): latex/bench-res/res-test-suite-ct-$(ARCH)

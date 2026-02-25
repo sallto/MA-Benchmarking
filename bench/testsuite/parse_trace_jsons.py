@@ -240,15 +240,16 @@ eventmap = {
   "RunPass/X86 Avoid Store Forwarding Blocks": "LLVM_PostRA",
 }
 
-if len(sys.argv) != 6:
-    print('Usage: parse_trace_jsons.py <benchmarknum> <clang_O0_build_dir> <clang_O1_build_dir> <tpde_build_dir> <llc_mode>')
+if len(sys.argv) != 7:
+    print('Usage: parse_trace_jsons.py <benchmarknum> <clang_O0_build_dir> <clang_O1_build_dir> <tpde_build_dir> <tpde_old_build_dir> <llc_mode>')
     exit(1)
 
 benchmark = sys.argv[1]
 clang_O0_path = sys.argv[2]
 clang_O1_path = sys.argv[3]
 tpde_path = sys.argv[4]
-llc_mode = (sys.argv[5] == 'true')
+tpde_old_path = sys.argv[5]
+llc_mode = (sys.argv[6] == 'true')
 if llc_mode:
     eventmap["Total OptModule"] = "codegen"
 
@@ -270,7 +271,7 @@ def parse_jsons(folder_path, index):
 
     return res
 
-for (ty, folder_path) in [('clang_o0', clang_O0_path), ('clang_o1', clang_O1_path), ('tpde', tpde_path)]:
+for (ty, folder_path) in [('clang_o0', clang_O0_path), ('clang_o1', clang_O1_path), ('tpde', tpde_path), ('tpde_old', tpde_old_path)]:
     res = []
     for i in range(0, 5):
         res.append(parse_jsons(folder_path, i))

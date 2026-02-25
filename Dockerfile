@@ -67,7 +67,7 @@ COPY --from=build /tpde-old /tpde-old
 WORKDIR /
 COPY bench /bench
 WORKDIR /bench
-RUN ln -s /llvm-install llvm && ln -s /tpde/build tpde && ln -s /tpde-old tpde-old
+RUN ln -s /llvm-install llvm && ln -s /tpde/build tpde && ln -s /tpde-old/build tpde-old
 
 # clone llvm-test-suite
 RUN git clone https://github.com/llvm/llvm-test-suite.git testsuite/llvm-test-suite
