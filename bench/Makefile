@@ -10,7 +10,7 @@ TPDE_OLD_DIR=$(ROOT)/tpde-old
 RESULTS= latex/bench-res/res-spec-ct-$(ARCH) latex/bench-res/res-spec-rt-$(ARCH)
 
 .PHONY: all
-all: bench-res-rt res-spec-rt
+all: res-spec-rt bench-res-rt 
 all-x86_64: 
 
 all-aarch64:
