@@ -1,2 +1,1 @@
-cd llvm-project
-ninja -C build_release/ -j4
+docker run --rm -it   -v ~/Code/CPU2017v1.1.0:/spec_mount:ro,Z   myimage:latest

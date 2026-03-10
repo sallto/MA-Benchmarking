@@ -16,8 +16,10 @@ mafft
 MallocBench
 McCat
 mediabench
+MiBench
 nbench
 NPB-serial
+Olden
 PAQ8p
 Prolangs-C++
 Prolangs-C
@@ -25,4 +27,7 @@ Ptrdist
 Rodinia
 SciMark2-C
 sim
+tramp3d-v4
+Trimaran
+TSVC
 VersaBench

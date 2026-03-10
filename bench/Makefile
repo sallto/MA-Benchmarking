@@ -1,5 +1,4 @@
 ROOT=$(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-REPETITIONS=5
 ARCH=$(shell uname -m)
 LLVM_DIR=$(ROOT)/llvm
 TPDE_DIR=$(ROOT)/tpde
@@ -10,23 +9,18 @@ TPDE_OLD_DIR=$(ROOT)/tpde-old
 
 RESULTS= latex/bench-res/res-spec-ct-$(ARCH) latex/bench-res/res-spec-rt-$(ARCH)
 
-.PHONY: all all-x86_64 all-aarch64 all-spec
-all: latex/bench-res/res-test-suite-ct-$(ARCH) latex/bench-res/res-test-suite-rt-text-$(ARCH) latex/figures_$(ARCH).pdf all-$(ARCH)
-
+.PHONY: all
+all: bench-res-rt res-spec-rt
 all-x86_64: 
 
 all-aarch64:
 
 all-spec: all res-spec-ct res-spec-rt latex/figures_spec_$(ARCH).pdf
 
-DATABASES=db/tpcdsSf1.db db/tpcdsSf10.db
-
-.PHONY: prepare
-prepare: $(DATABASES)
 
 .PHONY: clean
 clean:
-	rm -rf tpcds-kit tpcds-data db latex/bench-res/res-*
+	rm -rf latex/bench-res/res-*
 	# if the config files do not exists, this command errors
 	-$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-ct --action trash intspeed
 	-$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct --action trash intspeed
@@ -39,6 +33,70 @@ clean:
 	rm -rf $(ROOT)/testsuite/llvm-test-suite/build_tpde_old
 	mkdir spec/result
 
+
+
+# Install SPEC
+spec:
+	/spec_mount/install.sh -f -d /bench/spec
+
+
+spec/config/$(ARCH)-%-ct.cfg: spec_config/$(ARCH)-%-ct.cfg spec_config/$(ARCH)-base.cfg | spec
+	cp spec_config/$(ARCH)-$*-ct.cfg spec/config/$(ARCH)-$*-ct.cfg
+	echo "%define gcc_dir \"$(LLVM_DIR)\"" >> spec/config/$(ARCH)-$*-ct.cfg
+	echo "%define artifact_dir \"$(ROOT)\"" >> spec/config/$(ARCH)-$*-ct.cfg
+	cat spec_config/$(ARCH)-base.cfg >> spec/config/$(ARCH)-$*-ct.cfg
+
+spec/config/$(ARCH)-%-rt.cfg: spec_config/$(ARCH)-%-rt.cfg spec_config/$(ARCH)-base.cfg | spec
+	cp spec_config/$(ARCH)-$*-rt.cfg spec/config/$(ARCH)-$*-rt.cfg
+	echo "%define gcc_dir \"$(LLVM_DIR)\"" >> spec/config/$(ARCH)-$*-rt.cfg
+	echo "%define artifact_dir \"$(ROOT)\"" >> spec/config/$(ARCH)-$*-rt.cfg
+	cat spec_config/$(ARCH)-base.cfg >> spec/config/$(ARCH)-$*-rt.cfg
+
+latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/config/$(ARCH)-tpde-ct.cfg spec/config/$(ARCH)-tpde-old-ct.cfg | spec latex/bench-res 
+	# create build directories
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct.cfg --define o1ir --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-ct.cfg --define o1ir --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-old-ct.cfg --define o1ir --action=buildsetup intspeed
+	-rm latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH)
+	$(ROOT)/run_ct_bench.sh "$(ROOT)/spec" $(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) true -O0
+
+latex/bench-res/res-spec-raw-ct-o1-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/config/$(ARCH)-tpde-ct.cfg spec/config/$(ARCH)-tpde-old-ct.cfg | spec latex/bench-res 
+	# create build directories
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct.cfg --define o1ir --define o1llc --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-ct.cfg --define o1ir --define o1llc --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-old-ct.cfg --define o1ir --define o1llc --action=buildsetup intspeed
+	-rm latex/bench-res/res-spec-raw-ct-o1-$(ARCH)
+	$(ROOT)/run_ct_bench.sh "$(ROOT)/spec" $(ARCH) latex/bench-res/res-spec-raw-ct-o1-$(ARCH) true -O1
+
+latex/bench-res/res-spec-raw-rt-$(ARCH)-%: spec/config/$(ARCH)-%-rt.cfg | spec latex/bench-res 
+	-rm -rf $(ROOT)/spec/result/paper-$*-rt
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-$*-rt.cfg -n 2 --expid=paper-$*-rt --rebuild intspeed
+	# the result files are named CPU2017.001.intspeed.*
+	sed -ne '/^"Selected Results Table"/{:a' -e 'n;p;ba' -e '}' $(ROOT)/spec/result/paper-$*-rt/CPU2017.001.intspeed.refspeed.csv | awk -F, '/^Benchmark/ { in_table=1 } /^$$/{ in_table=0 } in_table && $$1 ~ /^[0-9]+\..+$$/ { print substr($$1, 1, 3) ": " $$3 }' > latex/bench-res/res-spec-raw-rt-$(ARCH)-$*
+
+
+latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-%: spec/config/$(ARCH)-%-rt.cfg | spec latex/bench-res 
+	-rm -rf $(ROOT)/spec/result/paper-$*-rt-o1ir
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-$*-rt.cfg --define o1ir -n 2 --expid=paper-$*-rt-o1ir --rebuild intspeed
+	# the result files are named CPU2017.001.intspeed.*
+	sed -ne '/^"Selected Results Table"/{:a' -e 'n;p;ba' -e '}' $(ROOT)/spec/result/paper-$*-rt-o1ir/CPU2017.001.intspeed.refspeed.csv | awk -F, '/^Benchmark/ { in_table=1 } /^$$/{ in_table=0 } in_table && $$1 ~ /^[0-9]+\..+$$/ { print substr($$1, 1, 3) ": " $$3 }' > latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-$*
+
+latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-%: spec/config/$(ARCH)-%-rt.cfg | spec latex/bench-res 
+	-rm -rf $(ROOT)/spec/result/paper-$*-rt-o1
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-$*-rt.cfg --define o1ir --define o1llc -n 2 --expid=paper-$*-rt-o1 --rebuild intspeed
+	# the result files are named CPU2017.001.intspeed.*
+	sed -ne '/^"Selected Results Table"/{:a' -e 'n;p;ba' -e '}' $(ROOT)/spec/result/paper-$*-rt-o1/CPU2017.001.intspeed.refspeed.csv | awk -F, '/^Benchmark/ { in_table=1 } /^$$/{ in_table=0 } in_table && $$1 ~ /^[0-9]+\..+$$/ { print substr($$1, 1, 3) ": " $$3 }' > latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-$*
+
+
+.PHONY: res-spec-raw-rt-o1ir-$(ARCH)
+res-spec-raw-rt-o1ir-$(ARCH): latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-clang latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-tpde latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-tpde-old
+
+.PHONY: res-spec-raw-rt-o1-$(ARCH)
+res-spec-raw-rt-o1-$(ARCH): latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-clang
+
+
+.PHONY: res-spec-rt
+res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH)
 
 ifeq ($(ARCH), aarch64)
 EXTRA_FLAGS="-Xclang -mlong-double-64 -g"
@@ -55,12 +113,15 @@ latex/bench-res:
 latex/bench-res/res-test-suite-ct-$(ARCH): | testsuite/llvm-test-suite/build_llvm_O0 testsuite/llvm-test-suite/build_llvm_O1 testsuite/llvm-test-suite/build_tpde testsuite/llvm-test-suite/build_tpde_old latex/bench-res 
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(TPDE_DIR)/tpde-llvm/tpde-llc" ninja -C build_tpde -j 4
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(LLVM_DIR)/bin/llc --filetype=obj --relocation-model=pic -O0" ninja -C build_llvm_O0 -j 4
-	cd testsuite/llvm-test-suite; env TPDE_LLC="$(LLVM_DIR)/bin/llc --filetype=obj --relocation-model=pic -O2" ninja -C build_llvm_O1 -j 4
+	cd testsuite/llvm-test-suite; env TPDE_LLC="$(LLVM_DIR)/bin/llc --filetype=obj --relocation-model=pic -O1" ninja -C build_llvm_O1 -j 4
 	cd testsuite/llvm-test-suite; env TPDE_LLC="$(TPDE_OLD_DIR)/tpde-llvm/tpde-llc" ninja -C build_tpde_old -j 4
 	cd testsuite/llvm-test-suite; ../parse_traces.sh | tee $(ROOT)/$@
 
 latex/bench-res/res-test-suite-rt-text-$(ARCH): latex/bench-res/res-test-suite-ct-$(ARCH)
 	cd testsuite/llvm-test-suite; ../run_benches.sh | tee $(ROOT)/$@
+
+.PHONY: bench-res-rt
+bench-res-rt: latex/bench-res/res-test-suite-rt-text-$(ARCH)
 
 latex/figures_$(ARCH).pdf:: latex/bench-res/res-total-tpcdsSf1-$(ARCH) latex/bench-res/res-test-suite-ct-$(ARCH) latex/bench-res/res-test-suite-rt-text-$(ARCH)
 	cd latex && make all

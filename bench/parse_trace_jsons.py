@@ -151,14 +151,15 @@ eventmap = {
 "Total TPDE_GlobalGen": "global_gen",
 }
 
-if len(sys.argv) != 5:
+if len(sys.argv) != 6:
     print('Usage: parse_trace_jsons.py <benchmarknum> <clang_build_dir> <tpde_build_dir> <llc_mode>')
     exit(1)
 
 benchmark = sys.argv[1]
 clang_path = sys.argv[2]
 tpde_path = sys.argv[3]
-llc_mode = (sys.argv[4] == 'true')
+tpde_old_path = sys.argv[4]
+llc_mode = (sys.argv[5] == 'true')
 if llc_mode:
     eventmap["Total OptModule"] = "codegen"
 
@@ -181,7 +182,7 @@ def parse_jsons(folder_path):
 
 for (ty, folder_path) in [('clang', clang_path), ('tpde', tpde_path)]:
     res = []
-    for i in range(1, 6):
+    for i in range(1, 2):
         tmp_path = folder_path
         if (tmp_path[-1] != '/'):
             tmp_path += '/'
@@ -189,6 +190,6 @@ for (ty, folder_path) in [('clang', clang_path), ('tpde', tpde_path)]:
         res.append(parse_jsons(tmp_path))
 
     res.sort(key=lambda r: r["total"])
-    res = res[1:-1]
+    #res = res[1:-1]
     for k in sorted(res[0].keys()):
         print(benchmark, k, ty, sum(r[k] for r in res) / len(res))

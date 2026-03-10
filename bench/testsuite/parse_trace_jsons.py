@@ -149,6 +149,8 @@ eventmap = {
 "Total TPDE_CodeGen": "tpde_cg",
 "Total TPDE_EmitObj": "emit_obj",
 "Total TPDE_GlobalGen": "global_gen",
+"Total TPDE_compute_precise_liveness": "tpde_pl",
+"Total TPDE_compute_spills": "tpde_spill",
  # IR / pre-isel (frontend+midend / IR pipeline before instruction selection)
   "RunPass/Basic Alias Analysis (stateless AA impl)": "LLVM_PreISel",
   "RunPass/Canonicalize natural loops": "LLVM_PreISel",
