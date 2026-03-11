@@ -1,0 +1,1980 @@
+7zip LLVM_AsmPrinter clang_o0 583886.0
+7zip LLVM_FreeMF clang_o0 11039.0
+7zip LLVM_ISel clang_o0 869279.3333333334
+7zip LLVM_OtherPasses clang_o0 129939.33333333333
+7zip LLVM_PostRA clang_o0 798115.0
+7zip LLVM_PreISel clang_o0 640868.3333333334
+7zip LLVM_PreRA clang_o0 6807.666666666667
+7zip LLVM_RA clang_o0 170129.0
+7zip codegen clang_o0 3694682.3333333335
+7zip total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+7zip LLVM_AsmPrinter clang_o1 330668.3333333333
+7zip LLVM_FreeMF clang_o1 11952.0
+7zip LLVM_ISel clang_o1 1641701.0
+7zip LLVM_OtherPasses clang_o1 715535.6666666666
+7zip LLVM_PostRA clang_o1 920775.3333333334
+7zip LLVM_PreISel clang_o1 1754935.6666666667
+7zip LLVM_PreRA clang_o1 1174885.6666666667
+7zip LLVM_RA clang_o1 1012863.3333333334
+7zip codegen clang_o1 8125526.333333333
+7zip total clang_o1 0.0
+7zip analysis tpde 275279.3333333333
+7zip codegen tpde 410054.3333333333
+7zip emit_obj tpde 1411.0
+7zip global_gen tpde 4174.333333333333
+7zip prepass tpde 10378.333333333334
+7zip total tpde 0.0
+7zip tpde_cg tpde 108718.0
+7zip tpde_pl tpde 170563.33333333334
+7zip tpde_spill tpde 89336.33333333333
+7zip analysis tpde_old 11930.333333333334
+7zip codegen tpde_old 80141.0
+7zip emit_obj tpde_old 1173.0
+7zip global_gen tpde_old 4278.0
+7zip prepass tpde_old 9295.666666666666
+7zip total tpde_old 0.0
+7zip tpde_cg tpde_old 44302.333333333336
+ASCI_Purple LLVM_AsmPrinter clang_o0 82483.66666666667
+ASCI_Purple LLVM_FreeMF clang_o0 1339.3333333333333
+ASCI_Purple LLVM_ISel clang_o0 108261.0
+ASCI_Purple LLVM_OtherPasses clang_o0 15958.666666666666
+ASCI_Purple LLVM_PostRA clang_o0 145465.33333333334
+ASCI_Purple LLVM_PreISel clang_o0 84514.0
+ASCI_Purple LLVM_PreRA clang_o0 951.3333333333334
+ASCI_Purple LLVM_RA clang_o0 24553.666666666668
+ASCI_Purple codegen clang_o0 514521.3333333333
+ASCI_Purple total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+ASCI_Purple LLVM_AsmPrinter clang_o1 50832.666666666664
+ASCI_Purple LLVM_FreeMF clang_o1 1229.6666666666667
+ASCI_Purple LLVM_ISel clang_o1 237493.33333333334
+ASCI_Purple LLVM_OtherPasses clang_o1 106685.0
+ASCI_Purple LLVM_PostRA clang_o1 139564.0
+ASCI_Purple LLVM_PreISel clang_o1 428420.3333333333
+ASCI_Purple LLVM_PreRA clang_o1 246685.0
+ASCI_Purple LLVM_RA clang_o1 185469.0
+ASCI_Purple codegen clang_o1 1454526.3333333333
+ASCI_Purple total clang_o1 0.0
+ASCI_Purple analysis tpde 41682.0
+ASCI_Purple codegen tpde 59160.0
+ASCI_Purple emit_obj tpde 156.33333333333334
+ASCI_Purple global_gen tpde 111.33333333333333
+ASCI_Purple prepass tpde 941.6666666666666
+ASCI_Purple total tpde 0.0
+ASCI_Purple tpde_cg tpde 14828.333333333334
+ASCI_Purple tpde_pl tpde 23100.333333333332
+ASCI_Purple tpde_spill tpde 16872.0
+ASCI_Purple analysis tpde_old 1355.3333333333333
+ASCI_Purple codegen tpde_old 10718.333333333334
+ASCI_Purple emit_obj tpde_old 114.66666666666667
+ASCI_Purple global_gen tpde_old 137.66666666666666
+ASCI_Purple prepass tpde_old 909.3333333333334
+ASCI_Purple total tpde_old 0.0
+ASCI_Purple tpde_cg tpde_old 6662.333333333333
+ASC_Sequoia LLVM_AsmPrinter clang_o0 13080.0
+ASC_Sequoia LLVM_FreeMF clang_o0 245.0
+ASC_Sequoia LLVM_ISel clang_o0 18727.666666666668
+ASC_Sequoia LLVM_OtherPasses clang_o0 2674.0
+ASC_Sequoia LLVM_PostRA clang_o0 23165.0
+ASC_Sequoia LLVM_PreISel clang_o0 16590.333333333332
+ASC_Sequoia LLVM_PreRA clang_o0 93.66666666666667
+ASC_Sequoia LLVM_RA clang_o0 4346.333333333333
+ASC_Sequoia codegen clang_o0 90285.33333333333
+ASC_Sequoia total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+ASC_Sequoia LLVM_AsmPrinter clang_o1 9101.666666666666
+ASC_Sequoia LLVM_FreeMF clang_o1 282.6666666666667
+ASC_Sequoia LLVM_ISel clang_o1 45475.666666666664
+ASC_Sequoia LLVM_OtherPasses clang_o1 18765.333333333332
+ASC_Sequoia LLVM_PostRA clang_o1 28505.333333333332
+ASC_Sequoia LLVM_PreISel clang_o1 64505.333333333336
+ASC_Sequoia LLVM_PreRA clang_o1 38157.333333333336
+ASC_Sequoia LLVM_RA clang_o1 31103.666666666668
+ASC_Sequoia codegen clang_o1 248869.33333333334
+ASC_Sequoia total clang_o1 0.0
+ASC_Sequoia analysis tpde 3767.3333333333335
+ASC_Sequoia codegen tpde 6939.333333333333
+ASC_Sequoia emit_obj tpde 32.333333333333336
+ASC_Sequoia global_gen tpde 73.0
+ASC_Sequoia prepass tpde 150.0
+ASC_Sequoia total tpde 0.0
+ASC_Sequoia tpde_cg tpde 2517.6666666666665
+ASC_Sequoia tpde_pl tpde 1901.3333333333333
+ASC_Sequoia tpde_spill tpde 1573.6666666666667
+ASC_Sequoia analysis tpde_old 225.66666666666666
+ASC_Sequoia codegen tpde_old 2198.3333333333335
+ASC_Sequoia emit_obj tpde_old 28.666666666666668
+ASC_Sequoia global_gen tpde_old 71.66666666666667
+ASC_Sequoia prepass tpde_old 154.33333333333334
+ASC_Sequoia total tpde_old 0.0
+ASC_Sequoia tpde_cg tpde_old 1281.3333333333333
+BitBench LLVM_AsmPrinter clang_o0 3353.3333333333335
+BitBench LLVM_FreeMF clang_o0 89.66666666666667
+BitBench LLVM_ISel clang_o0 5653.0
+BitBench LLVM_OtherPasses clang_o0 820.6666666666666
+BitBench LLVM_PostRA clang_o0 4992.333333333333
+BitBench LLVM_PreISel clang_o0 4536.666666666667
+BitBench LLVM_PreRA clang_o0 33.0
+BitBench LLVM_RA clang_o0 1454.6666666666667
+BitBench codegen clang_o0 24405.666666666668
+BitBench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+BitBench LLVM_AsmPrinter clang_o1 2540.0
+BitBench LLVM_FreeMF clang_o1 80.66666666666667
+BitBench LLVM_ISel clang_o1 11898.0
+BitBench LLVM_OtherPasses clang_o1 4333.0
+BitBench LLVM_PostRA clang_o1 6910.0
+BitBench LLVM_PreISel clang_o1 11496.0
+BitBench LLVM_PreRA clang_o1 9843.0
+BitBench LLVM_RA clang_o1 7187.333333333333
+BitBench codegen clang_o1 58472.333333333336
+BitBench total clang_o1 0.0
+BitBench analysis tpde 864.6666666666666
+BitBench codegen tpde 1677.6666666666667
+BitBench emit_obj tpde 9.666666666666666
+BitBench global_gen tpde 22.0
+BitBench prepass tpde 44.666666666666664
+BitBench total tpde 0.0
+BitBench tpde_cg tpde 631.0
+BitBench tpde_pl tpde 446.6666666666667
+BitBench tpde_spill tpde 332.6666666666667
+BitBench analysis tpde_old 62.333333333333336
+BitBench codegen tpde_old 561.3333333333334
+BitBench emit_obj tpde_old 7.0
+BitBench global_gen tpde_old 23.666666666666668
+BitBench prepass tpde_old 42.666666666666664
+BitBench total tpde_old 0.0
+BitBench tpde_cg tpde_old 318.0
+Bullet LLVM_AsmPrinter clang_o0 365508.6666666667
+Bullet LLVM_FreeMF clang_o0 5558.333333333333
+Bullet LLVM_ISel clang_o0 487191.0
+Bullet LLVM_OtherPasses clang_o0 62435.333333333336
+Bullet LLVM_PostRA clang_o0 667535.6666666666
+Bullet LLVM_PreISel clang_o0 412468.6666666667
+Bullet LLVM_PreRA clang_o0 3926.0
+Bullet LLVM_RA clang_o0 94466.33333333333
+Bullet codegen clang_o0 2372267.6666666665
+Bullet total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Bullet LLVM_AsmPrinter clang_o1 243497.66666666666
+Bullet LLVM_FreeMF clang_o1 6323.666666666667
+Bullet LLVM_ISel clang_o1 1068536.6666666667
+Bullet LLVM_OtherPasses clang_o1 467390.3333333333
+Bullet LLVM_PostRA clang_o1 746013.6666666666
+Bullet LLVM_PreISel clang_o1 989294.0
+Bullet LLVM_PreRA clang_o1 1150368.6666666667
+Bullet LLVM_RA clang_o1 601674.6666666666
+Bullet codegen clang_o1 5604565.333333333
+Bullet total clang_o1 0.0
+Bullet analysis tpde 128607.66666666667
+Bullet codegen tpde 199231.0
+Bullet emit_obj tpde 796.3333333333334
+Bullet global_gen tpde 1903.6666666666667
+Bullet prepass tpde 5964.0
+Bullet total tpde 0.0
+Bullet tpde_cg tpde 56735.0
+Bullet tpde_pl tpde 67708.66666666667
+Bullet tpde_spill tpde 53298.0
+Bullet analysis tpde_old 5691.666666666667
+Bullet codegen tpde_old 42931.666666666664
+Bullet emit_obj tpde_old 527.0
+Bullet global_gen tpde_old 1930.3333333333333
+Bullet prepass tpde_old 5058.666666666667
+Bullet total tpde_old 0.0
+Bullet tpde_cg tpde_old 24990.333333333332
+DOE-ProxyApps-C++/HACCKernels LLVM_AsmPrinter clang_o0 4601.0
+DOE-ProxyApps-C++/HACCKernels LLVM_FreeMF clang_o0 70.66666666666667
+DOE-ProxyApps-C++/HACCKernels LLVM_ISel clang_o0 4042.0
+DOE-ProxyApps-C++/HACCKernels LLVM_OtherPasses clang_o0 584.3333333333334
+DOE-ProxyApps-C++/HACCKernels LLVM_PostRA clang_o0 7579.333333333333
+DOE-ProxyApps-C++/HACCKernels LLVM_PreISel clang_o0 4054.0
+DOE-ProxyApps-C++/HACCKernels LLVM_PreRA clang_o0 30.333333333333332
+DOE-ProxyApps-C++/HACCKernels LLVM_RA clang_o0 1035.3333333333333
+DOE-ProxyApps-C++/HACCKernels codegen clang_o0 26431.0
+DOE-ProxyApps-C++/HACCKernels total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+DOE-ProxyApps-C++/HACCKernels LLVM_AsmPrinter clang_o1 3116.0
+DOE-ProxyApps-C++/HACCKernels LLVM_FreeMF clang_o1 42.666666666666664
+DOE-ProxyApps-C++/HACCKernels LLVM_ISel clang_o1 8996.666666666666
+DOE-ProxyApps-C++/HACCKernels LLVM_OtherPasses clang_o1 2704.6666666666665
+DOE-ProxyApps-C++/HACCKernels LLVM_PostRA clang_o1 8007.0
+DOE-ProxyApps-C++/HACCKernels LLVM_PreISel clang_o1 9664.333333333334
+DOE-ProxyApps-C++/HACCKernels LLVM_PreRA clang_o1 7957.0
+DOE-ProxyApps-C++/HACCKernels LLVM_RA clang_o1 7397.333333333333
+DOE-ProxyApps-C++/HACCKernels codegen clang_o1 51852.0
+DOE-ProxyApps-C++/HACCKernels total clang_o1 0.0
+DOE-ProxyApps-C++/HACCKernels analysis tpde 991.3333333333334
+DOE-ProxyApps-C++/HACCKernels codegen tpde 1793.3333333333333
+DOE-ProxyApps-C++/HACCKernels emit_obj tpde 14.333333333333334
+DOE-ProxyApps-C++/HACCKernels global_gen tpde 25.0
+DOE-ProxyApps-C++/HACCKernels prepass tpde 33.666666666666664
+DOE-ProxyApps-C++/HACCKernels total tpde 0.0
+DOE-ProxyApps-C++/HACCKernels tpde_cg tpde 663.6666666666666
+DOE-ProxyApps-C++/HACCKernels tpde_pl tpde 532.0
+DOE-ProxyApps-C++/HACCKernels tpde_spill tpde 399.6666666666667
+DOE-ProxyApps-C++/HACCKernels analysis tpde_old 54.666666666666664
+DOE-ProxyApps-C++/HACCKernels codegen tpde_old 473.3333333333333
+DOE-ProxyApps-C++/HACCKernels emit_obj tpde_old 5.333333333333333
+DOE-ProxyApps-C++/HACCKernels global_gen tpde_old 31.333333333333332
+DOE-ProxyApps-C++/HACCKernels prepass tpde_old 40.0
+DOE-ProxyApps-C++/HACCKernels total tpde_old 0.0
+DOE-ProxyApps-C++/HACCKernels tpde_cg tpde_old 270.3333333333333
+DOE-ProxyApps-C++/HPCCG LLVM_AsmPrinter clang_o0 18509.0
+DOE-ProxyApps-C++/HPCCG LLVM_FreeMF clang_o0 249.33333333333334
+DOE-ProxyApps-C++/HPCCG LLVM_ISel clang_o0 24405.333333333332
+DOE-ProxyApps-C++/HPCCG LLVM_OtherPasses clang_o0 2928.3333333333335
+DOE-ProxyApps-C++/HPCCG LLVM_PostRA clang_o0 23179.666666666668
+DOE-ProxyApps-C++/HPCCG LLVM_PreISel clang_o0 27328.0
+DOE-ProxyApps-C++/HPCCG LLVM_PreRA clang_o0 288.6666666666667
+DOE-ProxyApps-C++/HPCCG LLVM_RA clang_o0 4584.333333333333
+DOE-ProxyApps-C++/HPCCG codegen clang_o0 120910.33333333333
+DOE-ProxyApps-C++/HPCCG total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+DOE-ProxyApps-C++/HPCCG LLVM_AsmPrinter clang_o1 12250.666666666666
+DOE-ProxyApps-C++/HPCCG LLVM_FreeMF clang_o1 230.33333333333334
+DOE-ProxyApps-C++/HPCCG LLVM_ISel clang_o1 43719.0
+DOE-ProxyApps-C++/HPCCG LLVM_OtherPasses clang_o1 17998.0
+DOE-ProxyApps-C++/HPCCG LLVM_PostRA clang_o1 28169.0
+DOE-ProxyApps-C++/HPCCG LLVM_PreISel clang_o1 45226.0
+DOE-ProxyApps-C++/HPCCG LLVM_PreRA clang_o1 29596.666666666668
+DOE-ProxyApps-C++/HPCCG LLVM_RA clang_o1 27932.0
+DOE-ProxyApps-C++/HPCCG codegen clang_o1 223904.66666666666
+DOE-ProxyApps-C++/HPCCG total clang_o1 0.0
+DOE-ProxyApps-C++/HPCCG analysis tpde 8436.0
+DOE-ProxyApps-C++/HPCCG codegen tpde 12651.666666666666
+DOE-ProxyApps-C++/HPCCG emit_obj tpde 48.333333333333336
+DOE-ProxyApps-C++/HPCCG global_gen tpde 66.0
+DOE-ProxyApps-C++/HPCCG prepass tpde 276.3333333333333
+DOE-ProxyApps-C++/HPCCG total tpde 0.0
+DOE-ProxyApps-C++/HPCCG tpde_cg tpde 3357.6666666666665
+DOE-ProxyApps-C++/HPCCG tpde_pl tpde 4892.0
+DOE-ProxyApps-C++/HPCCG tpde_spill tpde 3151.6666666666665
+DOE-ProxyApps-C++/HPCCG analysis tpde_old 274.6666666666667
+DOE-ProxyApps-C++/HPCCG codegen tpde_old 2257.3333333333335
+DOE-ProxyApps-C++/HPCCG emit_obj tpde_old 27.333333333333332
+DOE-ProxyApps-C++/HPCCG global_gen tpde_old 56.666666666666664
+DOE-ProxyApps-C++/HPCCG prepass tpde_old 227.66666666666666
+DOE-ProxyApps-C++/HPCCG total tpde_old 0.0
+DOE-ProxyApps-C++/HPCCG tpde_cg tpde_old 1276.3333333333333
+DOE-ProxyApps-C++/PENNANT LLVM_AsmPrinter clang_o0 79853.66666666667
+DOE-ProxyApps-C++/PENNANT LLVM_FreeMF clang_o0 734.3333333333334
+DOE-ProxyApps-C++/PENNANT LLVM_ISel clang_o0 77536.33333333333
+DOE-ProxyApps-C++/PENNANT LLVM_OtherPasses clang_o0 12388.666666666666
+DOE-ProxyApps-C++/PENNANT LLVM_PostRA clang_o0 99714.33333333333
+DOE-ProxyApps-C++/PENNANT LLVM_PreISel clang_o0 68703.66666666667
+DOE-ProxyApps-C++/PENNANT LLVM_PreRA clang_o0 676.6666666666666
+DOE-ProxyApps-C++/PENNANT LLVM_RA clang_o0 14118.333333333334
+DOE-ProxyApps-C++/PENNANT codegen clang_o0 409877.3333333333
+DOE-ProxyApps-C++/PENNANT total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+DOE-ProxyApps-C++/PENNANT LLVM_AsmPrinter clang_o1 57771.0
+DOE-ProxyApps-C++/PENNANT LLVM_FreeMF clang_o1 817.6666666666666
+DOE-ProxyApps-C++/PENNANT LLVM_ISel clang_o1 134979.0
+DOE-ProxyApps-C++/PENNANT LLVM_OtherPasses clang_o1 66297.33333333333
+DOE-ProxyApps-C++/PENNANT LLVM_PostRA clang_o1 116260.33333333333
+DOE-ProxyApps-C++/PENNANT LLVM_PreISel clang_o1 179246.0
+DOE-ProxyApps-C++/PENNANT LLVM_PreRA clang_o1 104776.0
+DOE-ProxyApps-C++/PENNANT LLVM_RA clang_o1 127365.0
+DOE-ProxyApps-C++/PENNANT codegen clang_o1 846353.3333333334
+DOE-ProxyApps-C++/PENNANT total clang_o1 0.0
+DOE-ProxyApps-C++/PENNANT analysis tpde 34070.666666666664
+DOE-ProxyApps-C++/PENNANT codegen tpde 50909.666666666664
+DOE-ProxyApps-C++/PENNANT emit_obj tpde 77.66666666666667
+DOE-ProxyApps-C++/PENNANT global_gen tpde 140.66666666666666
+DOE-ProxyApps-C++/PENNANT prepass tpde 1236.3333333333333
+DOE-ProxyApps-C++/PENNANT total tpde 0.0
+DOE-ProxyApps-C++/PENNANT tpde_cg tpde 14792.0
+DOE-ProxyApps-C++/PENNANT tpde_pl tpde 20325.333333333332
+DOE-ProxyApps-C++/PENNANT tpde_spill tpde 12393.0
+DOE-ProxyApps-C++/PENNANT analysis tpde_old 1116.6666666666667
+DOE-ProxyApps-C++/PENNANT codegen tpde_old 7104.0
+DOE-ProxyApps-C++/PENNANT emit_obj tpde_old 49.666666666666664
+DOE-ProxyApps-C++/PENNANT global_gen tpde_old 156.0
+DOE-ProxyApps-C++/PENNANT prepass tpde_old 950.6666666666666
+DOE-ProxyApps-C++/PENNANT total tpde_old 0.0
+DOE-ProxyApps-C++/PENNANT tpde_cg tpde_old 4274.666666666667
+DOE-ProxyApps-C++/miniFE LLVM_AsmPrinter clang_o0 71012.66666666667
+DOE-ProxyApps-C++/miniFE LLVM_FreeMF clang_o0 637.6666666666666
+DOE-ProxyApps-C++/miniFE LLVM_ISel clang_o0 63353.666666666664
+DOE-ProxyApps-C++/miniFE LLVM_OtherPasses clang_o0 10541.0
+DOE-ProxyApps-C++/miniFE LLVM_PostRA clang_o0 86824.66666666667
+DOE-ProxyApps-C++/miniFE LLVM_PreISel clang_o0 64653.333333333336
+DOE-ProxyApps-C++/miniFE LLVM_PreRA clang_o0 847.6666666666666
+DOE-ProxyApps-C++/miniFE LLVM_RA clang_o0 11853.333333333334
+DOE-ProxyApps-C++/miniFE codegen clang_o0 342160.3333333333
+DOE-ProxyApps-C++/miniFE total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+DOE-ProxyApps-C++/miniFE LLVM_AsmPrinter clang_o1 44530.333333333336
+DOE-ProxyApps-C++/miniFE LLVM_FreeMF clang_o1 745.6666666666666
+DOE-ProxyApps-C++/miniFE LLVM_ISel clang_o1 112595.33333333333
+DOE-ProxyApps-C++/miniFE LLVM_OtherPasses clang_o1 51272.333333333336
+DOE-ProxyApps-C++/miniFE LLVM_PostRA clang_o1 95353.0
+DOE-ProxyApps-C++/miniFE LLVM_PreISel clang_o1 106889.0
+DOE-ProxyApps-C++/miniFE LLVM_PreRA clang_o1 76110.66666666667
+DOE-ProxyApps-C++/miniFE LLVM_RA clang_o1 93672.33333333333
+DOE-ProxyApps-C++/miniFE codegen clang_o1 611262.3333333334
+DOE-ProxyApps-C++/miniFE total clang_o1 0.0
+DOE-ProxyApps-C++/miniFE analysis tpde 19631.333333333332
+DOE-ProxyApps-C++/miniFE codegen tpde 27509.666666666668
+DOE-ProxyApps-C++/miniFE emit_obj tpde 44.0
+DOE-ProxyApps-C++/miniFE global_gen tpde 66.66666666666667
+DOE-ProxyApps-C++/miniFE prepass tpde 760.3333333333334
+DOE-ProxyApps-C++/miniFE total tpde 0.0
+DOE-ProxyApps-C++/miniFE tpde_cg tpde 6675.666666666667
+DOE-ProxyApps-C++/miniFE tpde_pl tpde 11982.0
+DOE-ProxyApps-C++/miniFE tpde_spill tpde 6918.333333333333
+DOE-ProxyApps-C++/miniFE analysis tpde_old 702.0
+DOE-ProxyApps-C++/miniFE codegen tpde_old 4322.0
+DOE-ProxyApps-C++/miniFE emit_obj tpde_old 34.333333333333336
+DOE-ProxyApps-C++/miniFE global_gen tpde_old 82.0
+DOE-ProxyApps-C++/miniFE prepass tpde_old 748.6666666666666
+DOE-ProxyApps-C++/miniFE total tpde_old 0.0
+DOE-ProxyApps-C++/miniFE tpde_cg tpde_old 2443.6666666666665
+DOE-ProxyApps-C LLVM_AsmPrinter clang_o0 69909.66666666667
+DOE-ProxyApps-C LLVM_FreeMF clang_o0 1398.3333333333333
+DOE-ProxyApps-C LLVM_ISel clang_o0 114772.0
+DOE-ProxyApps-C LLVM_OtherPasses clang_o0 15173.333333333334
+DOE-ProxyApps-C LLVM_PostRA clang_o0 127105.66666666667
+DOE-ProxyApps-C LLVM_PreISel clang_o0 72481.66666666667
+DOE-ProxyApps-C LLVM_PreRA clang_o0 616.3333333333334
+DOE-ProxyApps-C LLVM_RA clang_o0 24924.0
+DOE-ProxyApps-C codegen clang_o0 491120.0
+DOE-ProxyApps-C total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+DOE-ProxyApps-C LLVM_AsmPrinter clang_o1 47196.666666666664
+DOE-ProxyApps-C LLVM_FreeMF clang_o1 1353.6666666666667
+DOE-ProxyApps-C LLVM_ISel clang_o1 272546.0
+DOE-ProxyApps-C LLVM_OtherPasses clang_o1 103571.66666666667
+DOE-ProxyApps-C LLVM_PostRA clang_o1 151707.66666666666
+DOE-ProxyApps-C LLVM_PreISel clang_o1 318416.6666666667
+DOE-ProxyApps-C LLVM_PreRA clang_o1 277464.6666666667
+DOE-ProxyApps-C LLVM_RA clang_o1 183066.66666666666
+DOE-ProxyApps-C codegen clang_o1 1430835.3333333333
+DOE-ProxyApps-C total clang_o1 0.0
+DOE-ProxyApps-C analysis tpde 28375.0
+DOE-ProxyApps-C codegen tpde 47610.666666666664
+DOE-ProxyApps-C emit_obj tpde 207.66666666666666
+DOE-ProxyApps-C global_gen tpde 670.6666666666666
+DOE-ProxyApps-C prepass tpde 924.0
+DOE-ProxyApps-C total tpde 0.0
+DOE-ProxyApps-C tpde_cg tpde 15684.666666666666
+DOE-ProxyApps-C tpde_pl tpde 15942.666666666666
+DOE-ProxyApps-C tpde_spill tpde 10792.0
+DOE-ProxyApps-C analysis tpde_old 1449.6666666666667
+DOE-ProxyApps-C codegen tpde_old 12097.333333333334
+DOE-ProxyApps-C emit_obj tpde_old 151.33333333333334
+DOE-ProxyApps-C global_gen tpde_old 744.0
+DOE-ProxyApps-C prepass tpde_old 927.0
+DOE-ProxyApps-C total tpde_old 0.0
+DOE-ProxyApps-C tpde_cg tpde_old 6983.666666666667
+Fhourstones LLVM_AsmPrinter clang_o0 2235.0
+Fhourstones LLVM_FreeMF clang_o0 64.33333333333333
+Fhourstones LLVM_ISel clang_o0 4889.333333333333
+Fhourstones LLVM_OtherPasses clang_o0 691.6666666666666
+Fhourstones LLVM_PostRA clang_o0 3812.6666666666665
+Fhourstones LLVM_PreISel clang_o0 4265.333333333333
+Fhourstones LLVM_PreRA clang_o0 28.666666666666668
+Fhourstones LLVM_RA clang_o0 1092.3333333333333
+Fhourstones codegen clang_o0 20151.333333333332
+Fhourstones total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Fhourstones LLVM_AsmPrinter clang_o1 1743.3333333333333
+Fhourstones LLVM_FreeMF clang_o1 72.0
+Fhourstones LLVM_ISel clang_o1 12786.333333333334
+Fhourstones LLVM_OtherPasses clang_o1 4303.333333333333
+Fhourstones LLVM_PostRA clang_o1 5088.0
+Fhourstones LLVM_PreISel clang_o1 11114.333333333334
+Fhourstones LLVM_PreRA clang_o1 16223.333333333334
+Fhourstones LLVM_RA clang_o1 6566.333333333333
+Fhourstones codegen clang_o1 63369.0
+Fhourstones total clang_o1 0.0
+Fhourstones analysis tpde 680.6666666666666
+Fhourstones codegen tpde 1378.0
+Fhourstones emit_obj tpde 9.666666666666666
+Fhourstones global_gen tpde 26.333333333333332
+Fhourstones prepass tpde 42.333333333333336
+Fhourstones total tpde 0.0
+Fhourstones tpde_cg tpde 524.6666666666666
+Fhourstones tpde_pl tpde 356.0
+Fhourstones tpde_spill tpde 246.66666666666666
+Fhourstones analysis tpde_old 64.33333333333333
+Fhourstones codegen tpde_old 505.3333333333333
+Fhourstones emit_obj tpde_old 7.666666666666667
+Fhourstones global_gen tpde_old 27.0
+Fhourstones prepass tpde_old 36.0
+Fhourstones total tpde_old 0.0
+Fhourstones tpde_cg tpde_old 272.0
+Fhourstones-3.1 LLVM_AsmPrinter clang_o0 2619.3333333333335
+Fhourstones-3.1 LLVM_FreeMF clang_o0 66.66666666666667
+Fhourstones-3.1 LLVM_ISel clang_o0 5296.0
+Fhourstones-3.1 LLVM_OtherPasses clang_o0 960.6666666666666
+Fhourstones-3.1 LLVM_PostRA clang_o0 4214.0
+Fhourstones-3.1 LLVM_PreISel clang_o0 2653.6666666666665
+Fhourstones-3.1 LLVM_PreRA clang_o0 30.0
+Fhourstones-3.1 LLVM_RA clang_o0 1064.3333333333333
+Fhourstones-3.1 codegen clang_o0 19263.0
+Fhourstones-3.1 total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Fhourstones-3.1 LLVM_AsmPrinter clang_o1 1272.6666666666667
+Fhourstones-3.1 LLVM_FreeMF clang_o1 46.333333333333336
+Fhourstones-3.1 LLVM_ISel clang_o1 9743.0
+Fhourstones-3.1 LLVM_OtherPasses clang_o1 3486.3333333333335
+Fhourstones-3.1 LLVM_PostRA clang_o1 4273.0
+Fhourstones-3.1 LLVM_PreISel clang_o1 9753.0
+Fhourstones-3.1 LLVM_PreRA clang_o1 11775.0
+Fhourstones-3.1 LLVM_RA clang_o1 6412.666666666667
+Fhourstones-3.1 codegen clang_o1 48966.0
+Fhourstones-3.1 total clang_o1 0.0
+Fhourstones-3.1 analysis tpde 748.0
+Fhourstones-3.1 codegen tpde 1278.3333333333333
+Fhourstones-3.1 emit_obj tpde 4.0
+Fhourstones-3.1 global_gen tpde 11.666666666666666
+Fhourstones-3.1 prepass tpde 38.333333333333336
+Fhourstones-3.1 total tpde 0.0
+Fhourstones-3.1 tpde_cg tpde 444.0
+Fhourstones-3.1 tpde_pl tpde 405.6666666666667
+Fhourstones-3.1 tpde_spill tpde 275.6666666666667
+Fhourstones-3.1 analysis tpde_old 57.666666666666664
+Fhourstones-3.1 codegen tpde_old 431.6666666666667
+Fhourstones-3.1 emit_obj tpde_old 4.0
+Fhourstones-3.1 global_gen tpde_old 14.666666666666666
+Fhourstones-3.1 prepass tpde_old 43.666666666666664
+Fhourstones-3.1 total tpde_old 0.0
+Fhourstones-3.1 tpde_cg tpde_old 274.0
+FreeBench LLVM_AsmPrinter clang_o0 29214.333333333332
+FreeBench LLVM_FreeMF clang_o0 475.6666666666667
+FreeBench LLVM_ISel clang_o0 46660.666666666664
+FreeBench LLVM_OtherPasses clang_o0 5723.666666666667
+FreeBench LLVM_PostRA clang_o0 58935.0
+FreeBench LLVM_PreISel clang_o0 26349.333333333332
+FreeBench LLVM_PreRA clang_o0 221.66666666666666
+FreeBench LLVM_RA clang_o0 10289.666666666666
+FreeBench codegen clang_o0 199930.33333333334
+FreeBench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+FreeBench LLVM_AsmPrinter clang_o1 21042.666666666668
+FreeBench LLVM_FreeMF clang_o1 515.3333333333334
+FreeBench LLVM_ISel clang_o1 113897.66666666667
+FreeBench LLVM_OtherPasses clang_o1 46736.0
+FreeBench LLVM_PostRA clang_o1 71003.0
+FreeBench LLVM_PreISel clang_o1 141886.0
+FreeBench LLVM_PreRA clang_o1 106933.66666666667
+FreeBench LLVM_RA clang_o1 76405.0
+FreeBench codegen clang_o1 603996.3333333334
+FreeBench total clang_o1 0.0
+FreeBench analysis tpde 12512.666666666666
+FreeBench codegen tpde 19544.333333333332
+FreeBench emit_obj tpde 48.0
+FreeBench global_gen tpde 183.0
+FreeBench prepass tpde 475.3333333333333
+FreeBench total tpde 0.0
+FreeBench tpde_cg tpde 5895.333333333333
+FreeBench tpde_pl tpde 6944.0
+FreeBench tpde_spill tpde 4825.666666666667
+FreeBench analysis tpde_old 538.3333333333334
+FreeBench codegen tpde_old 3907.3333333333335
+FreeBench emit_obj tpde_old 40.333333333333336
+FreeBench global_gen tpde_old 194.33333333333334
+FreeBench prepass tpde_old 361.0
+FreeBench total tpde_old 0.0
+FreeBench tpde_cg tpde_old 2338.3333333333335
+llubenchmark LLVM_AsmPrinter clang_o0 880.0
+llubenchmark LLVM_FreeMF clang_o0 17.333333333333332
+llubenchmark LLVM_ISel clang_o0 1294.6666666666667
+llubenchmark LLVM_OtherPasses clang_o0 194.0
+llubenchmark LLVM_PostRA clang_o0 1445.6666666666667
+llubenchmark LLVM_PreISel clang_o0 521.0
+llubenchmark LLVM_PreRA clang_o0 2.0
+llubenchmark LLVM_RA clang_o0 342.6666666666667
+llubenchmark codegen clang_o0 5848.333333333333
+llubenchmark total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+llubenchmark LLVM_AsmPrinter clang_o1 683.0
+llubenchmark LLVM_FreeMF clang_o1 15.666666666666666
+llubenchmark LLVM_ISel clang_o1 2337.0
+llubenchmark LLVM_OtherPasses clang_o1 983.0
+llubenchmark LLVM_PostRA clang_o1 1667.3333333333333
+llubenchmark LLVM_PreISel clang_o1 1823.0
+llubenchmark LLVM_PreRA clang_o1 1708.3333333333333
+llubenchmark LLVM_RA clang_o1 2199.3333333333335
+llubenchmark codegen clang_o1 12459.0
+llubenchmark total clang_o1 0.0
+llubenchmark analysis tpde 259.3333333333333
+llubenchmark codegen tpde 534.3333333333334
+llubenchmark emit_obj tpde 6.0
+llubenchmark global_gen tpde 13.0
+llubenchmark prepass tpde 10.0
+llubenchmark total tpde 0.0
+llubenchmark tpde_cg tpde 218.0
+llubenchmark tpde_pl tpde 138.66666666666666
+llubenchmark tpde_spill tpde 99.0
+llubenchmark analysis tpde_old 19.0
+llubenchmark codegen tpde_old 181.66666666666666
+llubenchmark emit_obj tpde_old 2.3333333333333335
+llubenchmark global_gen tpde_old 14.0
+llubenchmark prepass tpde_old 10.0
+llubenchmark total tpde_old 0.0
+llubenchmark tpde_cg tpde_old 106.0
+mafft LLVM_AsmPrinter clang_o0 207564.66666666666
+mafft LLVM_FreeMF clang_o0 1699.6666666666667
+mafft LLVM_ISel clang_o0 187147.33333333334
+mafft LLVM_OtherPasses clang_o0 28797.333333333332
+mafft LLVM_PostRA clang_o0 293024.0
+mafft LLVM_PreISel clang_o0 111731.0
+mafft LLVM_PreRA clang_o0 1070.0
+mafft LLVM_RA clang_o0 40830.0
+mafft codegen clang_o0 940960.6666666666
+mafft total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+mafft LLVM_AsmPrinter clang_o1 98163.33333333333
+mafft LLVM_FreeMF clang_o1 1844.0
+mafft LLVM_ISel clang_o1 362068.0
+mafft LLVM_OtherPasses clang_o1 167337.66666666666
+mafft LLVM_PostRA clang_o1 280464.3333333333
+mafft LLVM_PreISel clang_o1 639021.6666666666
+mafft LLVM_PreRA clang_o1 269907.3333333333
+mafft LLVM_RA clang_o1 318784.3333333333
+mafft codegen clang_o1 2196200.0
+mafft total clang_o1 0.0
+mafft analysis tpde 66199.0
+mafft codegen tpde 100380.66666666667
+mafft emit_obj tpde 210.66666666666666
+mafft global_gen tpde 497.3333333333333
+mafft prepass tpde 1888.0
+mafft total tpde 0.0
+mafft tpde_cg tpde 30655.333333333332
+mafft tpde_pl tpde 40233.666666666664
+mafft tpde_spill tpde 23004.333333333332
+mafft analysis tpde_old 2875.6666666666665
+mafft codegen tpde_old 15832.0
+mafft emit_obj tpde_old 158.66666666666666
+mafft global_gen tpde_old 529.0
+mafft prepass tpde_old 1650.3333333333333
+mafft total tpde_old 0.0
+mafft tpde_cg tpde_old 9684.0
+MallocBench LLVM_AsmPrinter clang_o0 169304.33333333334
+MallocBench LLVM_FreeMF clang_o0 4106.0
+MallocBench LLVM_ISel clang_o0 311278.3333333333
+MallocBench LLVM_OtherPasses clang_o0 42472.0
+MallocBench LLVM_PostRA clang_o0 257599.66666666666
+MallocBench LLVM_PreISel clang_o0 195686.33333333334
+MallocBench LLVM_PreRA clang_o0 1940.0
+MallocBench LLVM_RA clang_o0 64425.666666666664
+MallocBench codegen clang_o0 1210600.0
+MallocBench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+MallocBench LLVM_AsmPrinter clang_o1 99260.33333333333
+MallocBench LLVM_FreeMF clang_o1 3587.6666666666665
+MallocBench LLVM_ISel clang_o1 675268.6666666666
+MallocBench LLVM_OtherPasses clang_o1 270229.6666666667
+MallocBench LLVM_PostRA clang_o1 357752.6666666667
+MallocBench LLVM_PreISel clang_o1 568753.3333333334
+MallocBench LLVM_PreRA clang_o1 586399.0
+MallocBench LLVM_RA clang_o1 406211.6666666667
+MallocBench codegen clang_o1 3151501.6666666665
+MallocBench total clang_o1 0.0
+MallocBench analysis tpde 74784.33333333333
+MallocBench codegen tpde 119823.0
+MallocBench emit_obj tpde 465.0
+MallocBench global_gen tpde 1103.0
+MallocBench prepass tpde 3182.6666666666665
+MallocBench total tpde 0.0
+MallocBench tpde_cg tpde 36504.666666666664
+MallocBench tpde_pl tpde 43527.0
+MallocBench tpde_spill tpde 26675.0
+MallocBench analysis tpde_old 3620.6666666666665
+MallocBench codegen tpde_old 27555.666666666668
+MallocBench emit_obj tpde_old 339.0
+MallocBench global_gen tpde_old 1199.3333333333333
+MallocBench prepass tpde_old 2555.3333333333335
+MallocBench total tpde_old 0.0
+MallocBench tpde_cg tpde_old 15937.0
+McCat LLVM_AsmPrinter clang_o0 24996.0
+McCat LLVM_FreeMF clang_o0 757.0
+McCat LLVM_ISel clang_o0 53294.666666666664
+McCat LLVM_OtherPasses clang_o0 7392.0
+McCat LLVM_PostRA clang_o0 49477.0
+McCat LLVM_PreISel clang_o0 35896.666666666664
+McCat LLVM_PreRA clang_o0 319.6666666666667
+McCat LLVM_RA clang_o0 11772.0
+McCat codegen clang_o0 220638.0
+McCat total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+McCat LLVM_AsmPrinter clang_o1 18423.666666666668
+McCat LLVM_FreeMF clang_o1 734.0
+McCat LLVM_ISel clang_o1 104629.0
+McCat LLVM_OtherPasses clang_o1 43121.666666666664
+McCat LLVM_PostRA clang_o1 65546.33333333333
+McCat LLVM_PreISel clang_o1 118741.66666666667
+McCat LLVM_PreRA clang_o1 102528.0
+McCat LLVM_RA clang_o1 64028.0
+McCat codegen clang_o1 555839.3333333334
+McCat total clang_o1 0.0
+McCat analysis tpde 8641.666666666666
+McCat codegen tpde 16475.0
+McCat emit_obj tpde 87.66666666666667
+McCat global_gen tpde 204.33333333333334
+McCat prepass tpde 414.3333333333333
+McCat total tpde 0.0
+McCat tpde_cg tpde 6115.666666666667
+McCat tpde_pl tpde 4399.333333333333
+McCat tpde_spill tpde 3457.0
+McCat analysis tpde_old 592.0
+McCat codegen tpde_old 5278.666666666667
+McCat emit_obj tpde_old 73.66666666666667
+McCat global_gen tpde_old 213.33333333333334
+McCat prepass tpde_old 387.6666666666667
+McCat total tpde_old 0.0
+McCat tpde_cg tpde_old 3031.0
+mediabench LLVM_AsmPrinter clang_o0 108014.66666666667
+mediabench LLVM_FreeMF clang_o0 2276.3333333333335
+mediabench LLVM_ISel clang_o0 212283.0
+mediabench LLVM_OtherPasses clang_o0 24725.333333333332
+mediabench LLVM_PostRA clang_o0 162058.66666666666
+mediabench LLVM_PreISel clang_o0 139509.33333333334
+mediabench LLVM_PreRA clang_o0 1157.6666666666667
+mediabench LLVM_RA clang_o0 41916.666666666664
+mediabench codegen clang_o0 800626.3333333334
+mediabench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+mediabench LLVM_AsmPrinter clang_o1 69329.0
+mediabench LLVM_FreeMF clang_o1 1867.0
+mediabench LLVM_ISel clang_o1 484091.6666666667
+mediabench LLVM_OtherPasses clang_o1 174604.0
+mediabench LLVM_PostRA clang_o1 202740.0
+mediabench LLVM_PreISel clang_o1 430550.6666666667
+mediabench LLVM_PreRA clang_o1 417567.3333333333
+mediabench LLVM_RA clang_o1 266243.6666666667
+mediabench codegen clang_o1 2156979.6666666665
+mediabench total clang_o1 0.0
+mediabench analysis tpde 44400.666666666664
+mediabench codegen tpde 72933.66666666667
+mediabench emit_obj tpde 316.3333333333333
+mediabench global_gen tpde 562.6666666666666
+mediabench prepass tpde 1652.3333333333333
+mediabench total tpde 0.0
+mediabench tpde_cg tpde 23545.0
+mediabench tpde_pl tpde 23761.666666666668
+mediabench tpde_spill tpde 17919.666666666668
+mediabench analysis tpde_old 4169.0
+mediabench codegen tpde_old 19750.0
+mediabench emit_obj tpde_old 228.66666666666666
+mediabench global_gen tpde_old 677.3333333333334
+mediabench prepass tpde_old 1510.0
+mediabench total tpde_old 0.0
+mediabench tpde_cg tpde_old 10588.666666666666
+MiBench LLVM_AsmPrinter clang_o0 302684.6666666667
+MiBench LLVM_FreeMF clang_o0 5007.333333333333
+MiBench LLVM_ISel clang_o0 606988.3333333334
+MiBench LLVM_OtherPasses clang_o0 71637.33333333333
+MiBench LLVM_PostRA clang_o0 440345.3333333333
+MiBench LLVM_PreISel clang_o0 345040.0
+MiBench LLVM_PreRA clang_o0 3463.0
+MiBench LLVM_RA clang_o0 101142.66666666667
+MiBench codegen clang_o0 2089865.0
+MiBench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+MiBench LLVM_AsmPrinter clang_o1 185557.66666666666
+MiBench LLVM_FreeMF clang_o1 4882.666666666667
+MiBench LLVM_ISel clang_o1 1309007.0
+MiBench LLVM_OtherPasses clang_o1 513002.6666666667
+MiBench LLVM_PostRA clang_o1 535307.6666666666
+MiBench LLVM_PreISel clang_o1 1139680.6666666667
+MiBench LLVM_PreRA clang_o1 970982.3333333334
+MiBench LLVM_RA clang_o1 866640.6666666666
+MiBench codegen clang_o1 5751438.333333333
+MiBench total clang_o1 0.0
+MiBench analysis tpde 152874.0
+MiBench codegen tpde 235960.0
+MiBench emit_obj tpde 814.6666666666666
+MiBench global_gen tpde 2628.6666666666665
+MiBench prepass tpde 5893.666666666667
+MiBench total tpde 0.0
+MiBench tpde_cg tpde 69026.0
+MiBench tpde_pl tpde 94033.66666666667
+MiBench tpde_spill tpde 51246.0
+MiBench analysis tpde_old 6417.333333333333
+MiBench codegen tpde_old 45534.0
+MiBench emit_obj tpde_old 572.3333333333334
+MiBench global_gen tpde_old 2015.0
+MiBench prepass tpde_old 4277.666666666667
+MiBench total tpde_old 0.0
+MiBench tpde_cg tpde_old 27473.333333333332
+nbench LLVM_AsmPrinter clang_o0 12859.333333333334
+nbench LLVM_FreeMF clang_o0 180.33333333333334
+nbench LLVM_ISel clang_o0 20108.666666666668
+nbench LLVM_OtherPasses clang_o0 2625.3333333333335
+nbench LLVM_PostRA clang_o0 20038.0
+nbench LLVM_PreISel clang_o0 13088.0
+nbench LLVM_PreRA clang_o0 183.0
+nbench LLVM_RA clang_o0 3918.0
+nbench codegen clang_o0 80725.66666666667
+nbench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+nbench LLVM_AsmPrinter clang_o1 7807.0
+nbench LLVM_FreeMF clang_o1 214.33333333333334
+nbench LLVM_ISel clang_o1 48156.666666666664
+nbench LLVM_OtherPasses clang_o1 17469.333333333332
+nbench LLVM_PostRA clang_o1 22460.333333333332
+nbench LLVM_PreISel clang_o1 63017.0
+nbench LLVM_PreRA clang_o1 36393.666666666664
+nbench LLVM_RA clang_o1 31018.666666666668
+nbench codegen clang_o1 235247.0
+nbench total clang_o1 0.0
+nbench analysis tpde 4588.333333333333
+nbench codegen tpde 7364.666666666667
+nbench emit_obj tpde 22.333333333333332
+nbench global_gen tpde 93.66666666666667
+nbench prepass tpde 208.33333333333334
+nbench total tpde 0.0
+nbench tpde_cg tpde 2314.0
+nbench tpde_pl tpde 2623.0
+nbench tpde_spill tpde 1654.3333333333333
+nbench analysis tpde_old 234.0
+nbench codegen tpde_old 1395.6666666666667
+nbench emit_obj tpde_old 11.666666666666666
+nbench global_gen tpde_old 85.33333333333333
+nbench prepass tpde_old 159.66666666666666
+nbench total tpde_old 0.0
+nbench tpde_cg tpde_old 779.0
+NPB-serial LLVM_AsmPrinter clang_o0 1032.3333333333333
+NPB-serial LLVM_FreeMF clang_o0 19.666666666666668
+NPB-serial LLVM_ISel clang_o0 2075.6666666666665
+NPB-serial LLVM_OtherPasses clang_o0 247.0
+NPB-serial LLVM_PostRA clang_o0 2153.0
+NPB-serial LLVM_PreISel clang_o0 1035.0
+NPB-serial LLVM_PreRA clang_o0 2.3333333333333335
+NPB-serial LLVM_RA clang_o0 435.6666666666667
+NPB-serial codegen clang_o0 8381.333333333334
+NPB-serial total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+NPB-serial LLVM_AsmPrinter clang_o1 1027.3333333333333
+NPB-serial LLVM_FreeMF clang_o1 34.333333333333336
+NPB-serial LLVM_ISel clang_o1 5711.0
+NPB-serial LLVM_OtherPasses clang_o1 2176.3333333333335
+NPB-serial LLVM_PostRA clang_o1 3232.3333333333335
+NPB-serial LLVM_PreISel clang_o1 5030.0
+NPB-serial LLVM_PreRA clang_o1 5401.666666666667
+NPB-serial LLVM_RA clang_o1 2932.6666666666665
+NPB-serial codegen clang_o1 27479.666666666668
+NPB-serial total clang_o1 0.0
+NPB-serial analysis tpde 317.6666666666667
+NPB-serial codegen tpde 627.3333333333334
+NPB-serial emit_obj tpde 7.333333333333333
+NPB-serial global_gen tpde 20.666666666666668
+NPB-serial prepass tpde 20.333333333333332
+NPB-serial total tpde 0.0
+NPB-serial tpde_cg tpde 235.0
+NPB-serial tpde_pl tpde 159.0
+NPB-serial tpde_spill tpde 126.0
+NPB-serial analysis tpde_old 26.333333333333332
+NPB-serial codegen tpde_old 246.33333333333334
+NPB-serial emit_obj tpde_old 4.333333333333333
+NPB-serial global_gen tpde_old 22.333333333333332
+NPB-serial prepass tpde_old 19.333333333333332
+NPB-serial total tpde_old 0.0
+NPB-serial tpde_cg tpde_old 146.0
+Olden LLVM_AsmPrinter clang_o0 25232.333333333332
+Olden LLVM_FreeMF clang_o0 656.0
+Olden LLVM_ISel clang_o0 45076.0
+Olden LLVM_OtherPasses clang_o0 6279.0
+Olden LLVM_PostRA clang_o0 50324.0
+Olden LLVM_PreISel clang_o0 38438.333333333336
+Olden LLVM_PreRA clang_o0 251.66666666666666
+Olden LLVM_RA clang_o0 10303.0
+Olden codegen clang_o0 204579.66666666666
+Olden total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Olden LLVM_AsmPrinter clang_o1 15631.333333333334
+Olden LLVM_FreeMF clang_o1 543.3333333333334
+Olden LLVM_ISel clang_o1 90781.0
+Olden LLVM_OtherPasses clang_o1 36444.666666666664
+Olden LLVM_PostRA clang_o1 55884.0
+Olden LLVM_PreISel clang_o1 87373.33333333333
+Olden LLVM_PreRA clang_o1 107987.33333333333
+Olden LLVM_RA clang_o1 54434.0
+Olden codegen clang_o1 482100.0
+Olden total clang_o1 0.0
+Olden analysis tpde 7414.666666666667
+Olden codegen tpde 13545.333333333334
+Olden emit_obj tpde 77.33333333333333
+Olden global_gen tpde 184.66666666666666
+Olden prepass tpde 416.6666666666667
+Olden total tpde 0.0
+Olden tpde_cg tpde 4608.0
+Olden tpde_pl tpde 4030.6666666666665
+Olden tpde_spill tpde 2704.6666666666665
+Olden analysis tpde_old 513.6666666666666
+Olden codegen tpde_old 4711.333333333333
+Olden emit_obj tpde_old 69.33333333333333
+Olden global_gen tpde_old 199.0
+Olden prepass tpde_old 339.3333333333333
+Olden total tpde_old 0.0
+Olden tpde_cg tpde_old 2654.3333333333335
+PAQ8p LLVM_AsmPrinter clang_o0 27220.666666666668
+PAQ8p LLVM_FreeMF clang_o0 314.6666666666667
+PAQ8p LLVM_ISel clang_o0 42011.333333333336
+PAQ8p LLVM_OtherPasses clang_o0 5123.333333333333
+PAQ8p LLVM_PostRA clang_o0 39972.333333333336
+PAQ8p LLVM_PreISel clang_o0 24607.666666666668
+PAQ8p LLVM_PreRA clang_o0 144.0
+PAQ8p LLVM_RA clang_o0 7114.666666666667
+PAQ8p codegen clang_o0 158543.0
+PAQ8p total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+PAQ8p LLVM_AsmPrinter clang_o1 21853.0
+PAQ8p LLVM_FreeMF clang_o1 542.3333333333334
+PAQ8p LLVM_ISel clang_o1 148582.33333333334
+PAQ8p LLVM_OtherPasses clang_o1 52746.666666666664
+PAQ8p LLVM_PostRA clang_o1 56345.0
+PAQ8p LLVM_PreISel clang_o1 89356.0
+PAQ8p LLVM_PreRA clang_o1 95005.66666666667
+PAQ8p LLVM_RA clang_o1 73248.66666666667
+PAQ8p codegen clang_o1 553587.3333333334
+PAQ8p total clang_o1 0.0
+PAQ8p analysis tpde 12290.666666666666
+PAQ8p codegen tpde 18050.333333333332
+PAQ8p emit_obj tpde 38.333333333333336
+PAQ8p global_gen tpde 82.33333333333333
+PAQ8p prepass tpde 676.6666666666666
+PAQ8p total tpde 0.0
+PAQ8p tpde_cg tpde 4815.666666666667
+PAQ8p tpde_pl tpde 6898.666666666667
+PAQ8p tpde_spill tpde 4788.333333333333
+PAQ8p analysis tpde_old 434.0
+PAQ8p codegen tpde_old 2671.6666666666665
+PAQ8p emit_obj tpde_old 17.333333333333332
+PAQ8p global_gen tpde_old 68.0
+PAQ8p prepass tpde_old 487.0
+PAQ8p total tpde_old 0.0
+PAQ8p tpde_cg tpde_old 1579.3333333333333
+Prolangs-C++ LLVM_AsmPrinter clang_o0 13670.666666666666
+Prolangs-C++ LLVM_FreeMF clang_o0 403.3333333333333
+Prolangs-C++ LLVM_ISel clang_o0 25370.666666666668
+Prolangs-C++ LLVM_OtherPasses clang_o0 3957.6666666666665
+Prolangs-C++ LLVM_PostRA clang_o0 20278.333333333332
+Prolangs-C++ LLVM_PreISel clang_o0 20327.666666666668
+Prolangs-C++ LLVM_PreRA clang_o0 209.66666666666666
+Prolangs-C++ LLVM_RA clang_o0 5267.666666666667
+Prolangs-C++ codegen clang_o0 115451.0
+Prolangs-C++ total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Prolangs-C++ LLVM_AsmPrinter clang_o1 8170.666666666667
+Prolangs-C++ LLVM_FreeMF clang_o1 375.3333333333333
+Prolangs-C++ LLVM_ISel clang_o1 45019.333333333336
+Prolangs-C++ LLVM_OtherPasses clang_o1 19226.666666666668
+Prolangs-C++ LLVM_PostRA clang_o1 24662.333333333332
+Prolangs-C++ LLVM_PreISel clang_o1 38787.333333333336
+Prolangs-C++ LLVM_PreRA clang_o1 40660.333333333336
+Prolangs-C++ LLVM_RA clang_o1 23984.666666666668
+Prolangs-C++ codegen clang_o1 226206.66666666666
+Prolangs-C++ total clang_o1 0.0
+Prolangs-C++ analysis tpde 2908.6666666666665
+Prolangs-C++ codegen tpde 5868.0
+Prolangs-C++ emit_obj tpde 50.666666666666664
+Prolangs-C++ global_gen tpde 203.0
+Prolangs-C++ prepass tpde 240.66666666666666
+Prolangs-C++ total tpde 0.0
+Prolangs-C++ tpde_cg tpde 1975.3333333333333
+Prolangs-C++ tpde_pl tpde 1385.0
+Prolangs-C++ tpde_spill tpde 1149.0
+Prolangs-C++ analysis tpde_old 226.33333333333334
+Prolangs-C++ codegen tpde_old 2318.6666666666665
+Prolangs-C++ emit_obj tpde_old 30.666666666666668
+Prolangs-C++ global_gen tpde_old 187.66666666666666
+Prolangs-C++ prepass tpde_old 212.0
+Prolangs-C++ total tpde_old 0.0
+Prolangs-C++ tpde_cg tpde_old 1204.0
+Prolangs-C LLVM_AsmPrinter clang_o0 58013.666666666664
+Prolangs-C LLVM_FreeMF clang_o0 1163.0
+Prolangs-C LLVM_ISel clang_o0 104990.33333333333
+Prolangs-C LLVM_OtherPasses clang_o0 15414.333333333334
+Prolangs-C LLVM_PostRA clang_o0 81989.66666666667
+Prolangs-C LLVM_PreISel clang_o0 70404.0
+Prolangs-C LLVM_PreRA clang_o0 474.0
+Prolangs-C LLVM_RA clang_o0 22594.666666666668
+Prolangs-C codegen clang_o0 399850.6666666667
+Prolangs-C total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Prolangs-C LLVM_AsmPrinter clang_o1 31972.0
+Prolangs-C LLVM_FreeMF clang_o1 1044.6666666666667
+Prolangs-C LLVM_ISel clang_o1 217580.0
+Prolangs-C LLVM_OtherPasses clang_o1 85282.66666666667
+Prolangs-C LLVM_PostRA clang_o1 99668.33333333333
+Prolangs-C LLVM_PreISel clang_o1 215247.66666666666
+Prolangs-C LLVM_PreRA clang_o1 189643.33333333334
+Prolangs-C LLVM_RA clang_o1 151155.0
+Prolangs-C codegen clang_o1 1038703.3333333334
+Prolangs-C total clang_o1 0.0
+Prolangs-C analysis tpde 22775.666666666668
+Prolangs-C codegen tpde 39584.333333333336
+Prolangs-C emit_obj tpde 199.66666666666666
+Prolangs-C global_gen tpde 420.6666666666667
+Prolangs-C prepass tpde 927.3333333333334
+Prolangs-C total tpde 0.0
+Prolangs-C tpde_cg tpde 13793.333333333334
+Prolangs-C tpde_pl tpde 12075.666666666666
+Prolangs-C tpde_spill tpde 9079.0
+Prolangs-C analysis tpde_old 1307.0
+Prolangs-C codegen tpde_old 9738.666666666666
+Prolangs-C emit_obj tpde_old 141.0
+Prolangs-C global_gen tpde_old 440.3333333333333
+Prolangs-C prepass tpde_old 842.3333333333334
+Prolangs-C total tpde_old 0.0
+Prolangs-C tpde_cg tpde_old 5566.666666666667
+Ptrdist LLVM_AsmPrinter clang_o0 44043.666666666664
+Ptrdist LLVM_FreeMF clang_o0 996.6666666666666
+Ptrdist LLVM_ISel clang_o0 84151.33333333333
+Ptrdist LLVM_OtherPasses clang_o0 11210.666666666666
+Ptrdist LLVM_PostRA clang_o0 63989.0
+Ptrdist LLVM_PreISel clang_o0 45359.666666666664
+Ptrdist LLVM_PreRA clang_o0 335.6666666666667
+Ptrdist LLVM_RA clang_o0 16535.333333333332
+Ptrdist codegen clang_o0 300939.0
+Ptrdist total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Ptrdist LLVM_AsmPrinter clang_o1 20041.666666666668
+Ptrdist LLVM_FreeMF clang_o1 719.6666666666666
+Ptrdist LLVM_ISel clang_o1 174947.66666666666
+Ptrdist LLVM_OtherPasses clang_o1 63728.666666666664
+Ptrdist LLVM_PostRA clang_o1 73811.33333333333
+Ptrdist LLVM_PreISel clang_o1 162079.33333333334
+Ptrdist LLVM_PreRA clang_o1 129640.0
+Ptrdist LLVM_RA clang_o1 106621.0
+Ptrdist codegen clang_o1 765365.3333333334
+Ptrdist total clang_o1 0.0
+Ptrdist analysis tpde 12850.0
+Ptrdist codegen tpde 22796.333333333332
+Ptrdist emit_obj tpde 94.33333333333333
+Ptrdist global_gen tpde 277.6666666666667
+Ptrdist prepass tpde 606.0
+Ptrdist total tpde 0.0
+Ptrdist tpde_cg tpde 8277.0
+Ptrdist tpde_pl tpde 6911.333333333333
+Ptrdist tpde_spill tpde 4928.0
+Ptrdist analysis tpde_old 857.3333333333334
+Ptrdist codegen tpde_old 5936.666666666667
+Ptrdist emit_obj tpde_old 103.33333333333333
+Ptrdist global_gen tpde_old 291.6666666666667
+Ptrdist prepass tpde_old 612.3333333333334
+Ptrdist total tpde_old 0.0
+Ptrdist tpde_cg tpde_old 3387.3333333333335
+Rodinia LLVM_AsmPrinter clang_o0 4541.666666666667
+Rodinia LLVM_FreeMF clang_o0 101.66666666666667
+Rodinia LLVM_ISel clang_o0 7712.0
+Rodinia LLVM_OtherPasses clang_o0 1049.6666666666667
+Rodinia LLVM_PostRA clang_o0 9773.666666666666
+Rodinia LLVM_PreISel clang_o0 7049.333333333333
+Rodinia LLVM_PreRA clang_o0 15.333333333333334
+Rodinia LLVM_RA clang_o0 1869.0
+Rodinia codegen clang_o0 37791.333333333336
+Rodinia total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Rodinia LLVM_AsmPrinter clang_o1 3825.0
+Rodinia LLVM_FreeMF clang_o1 95.0
+Rodinia LLVM_ISel clang_o1 18384.666666666668
+Rodinia LLVM_OtherPasses clang_o1 7448.0
+Rodinia LLVM_PostRA clang_o1 12528.333333333334
+Rodinia LLVM_PreISel clang_o1 32427.0
+Rodinia LLVM_PreRA clang_o1 33969.333333333336
+Rodinia LLVM_RA clang_o1 12397.666666666666
+Rodinia codegen clang_o1 128305.66666666667
+Rodinia total clang_o1 0.0
+Rodinia analysis tpde 2010.6666666666667
+Rodinia codegen tpde 3914.3333333333335
+Rodinia emit_obj tpde 23.0
+Rodinia global_gen tpde 41.333333333333336
+Rodinia prepass tpde 83.66666666666667
+Rodinia total tpde 0.0
+Rodinia tpde_cg tpde 1472.3333333333333
+Rodinia tpde_pl tpde 1023.3333333333334
+Rodinia tpde_spill tpde 835.6666666666666
+Rodinia analysis tpde_old 122.0
+Rodinia codegen tpde_old 1345.0
+Rodinia emit_obj tpde_old 19.333333333333332
+Rodinia global_gen tpde_old 44.333333333333336
+Rodinia prepass tpde_old 78.33333333333333
+Rodinia total tpde_old 0.0
+Rodinia tpde_cg tpde_old 800.3333333333334
+SciMark2-C LLVM_AsmPrinter clang_o0 4693.333333333333
+SciMark2-C LLVM_FreeMF clang_o0 157.0
+SciMark2-C LLVM_ISel clang_o0 8340.0
+SciMark2-C LLVM_OtherPasses clang_o0 1264.3333333333333
+SciMark2-C LLVM_PostRA clang_o0 8944.666666666666
+SciMark2-C LLVM_PreISel clang_o0 8500.333333333334
+SciMark2-C LLVM_PreRA clang_o0 24.666666666666668
+SciMark2-C LLVM_RA clang_o0 2088.3333333333335
+SciMark2-C codegen clang_o0 39921.333333333336
+SciMark2-C total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+SciMark2-C LLVM_AsmPrinter clang_o1 3768.6666666666665
+SciMark2-C LLVM_FreeMF clang_o1 120.0
+SciMark2-C LLVM_ISel clang_o1 16635.0
+SciMark2-C LLVM_OtherPasses clang_o1 7172.0
+SciMark2-C LLVM_PostRA clang_o1 11782.666666666666
+SciMark2-C LLVM_PreISel clang_o1 26008.333333333332
+SciMark2-C LLVM_PreRA clang_o1 18771.666666666668
+SciMark2-C LLVM_RA clang_o1 9686.666666666666
+SciMark2-C codegen clang_o1 100711.33333333333
+SciMark2-C total clang_o1 0.0
+SciMark2-C analysis tpde 1395.6666666666667
+SciMark2-C codegen tpde 2968.6666666666665
+SciMark2-C emit_obj tpde 33.0
+SciMark2-C global_gen tpde 38.333333333333336
+SciMark2-C prepass tpde 78.0
+SciMark2-C total tpde 0.0
+SciMark2-C tpde_cg tpde 1156.3333333333333
+SciMark2-C tpde_pl tpde 676.3333333333334
+SciMark2-C tpde_spill tpde 555.0
+SciMark2-C analysis tpde_old 101.66666666666667
+SciMark2-C codegen tpde_old 1119.0
+SciMark2-C emit_obj tpde_old 16.0
+SciMark2-C global_gen tpde_old 39.333333333333336
+SciMark2-C prepass tpde_old 61.666666666666664
+SciMark2-C total tpde_old 0.0
+SciMark2-C tpde_cg tpde_old 638.6666666666666
+sim LLVM_AsmPrinter clang_o0 6060.666666666667
+sim LLVM_FreeMF clang_o0 82.66666666666667
+sim LLVM_ISel clang_o0 7614.666666666667
+sim LLVM_OtherPasses clang_o0 1274.3333333333333
+sim LLVM_PostRA clang_o0 9619.666666666666
+sim LLVM_PreISel clang_o0 3588.0
+sim LLVM_PreRA clang_o0 21.666666666666668
+sim LLVM_RA clang_o0 2062.3333333333335
+sim codegen clang_o0 32400.0
+sim total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+sim LLVM_AsmPrinter clang_o1 3698.0
+sim LLVM_FreeMF clang_o1 92.33333333333333
+sim LLVM_ISel clang_o1 15250.0
+sim LLVM_OtherPasses clang_o1 7824.666666666667
+sim LLVM_PostRA clang_o1 10346.333333333334
+sim LLVM_PreISel clang_o1 17559.333333333332
+sim LLVM_PreRA clang_o1 14467.333333333334
+sim LLVM_RA clang_o1 20285.666666666668
+sim codegen clang_o1 92045.0
+sim total clang_o1 0.0
+sim analysis tpde 3541.3333333333335
+sim codegen tpde 5132.666666666667
+sim emit_obj tpde 4.333333333333333
+sim global_gen tpde 17.666666666666668
+sim prepass tpde 58.0
+sim total tpde 0.0
+sim tpde_cg tpde 1487.3333333333333
+sim tpde_pl tpde 2281.3333333333335
+sim tpde_spill tpde 1149.6666666666667
+sim analysis tpde_old 117.33333333333333
+sim codegen tpde_old 677.6666666666666
+sim emit_obj tpde_old 7.0
+sim global_gen tpde_old 24.0
+sim prepass tpde_old 74.33333333333333
+sim total tpde_old 0.0
+sim tpde_cg tpde_old 425.6666666666667
+tramp3d-v4 LLVM_AsmPrinter clang_o0 420300.3333333333
+tramp3d-v4 LLVM_FreeMF clang_o0 3914.0
+tramp3d-v4 LLVM_ISel clang_o0 418677.6666666667
+tramp3d-v4 LLVM_OtherPasses clang_o0 55643.333333333336
+tramp3d-v4 LLVM_PostRA clang_o0 537258.0
+tramp3d-v4 LLVM_PreISel clang_o0 465001.0
+tramp3d-v4 LLVM_PreRA clang_o0 5050.333333333333
+tramp3d-v4 LLVM_RA clang_o0 86010.0
+tramp3d-v4 codegen clang_o0 2185230.3333333335
+tramp3d-v4 total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+tramp3d-v4 LLVM_AsmPrinter clang_o1 408329.6666666667
+tramp3d-v4 LLVM_FreeMF clang_o1 6892.333333333333
+tramp3d-v4 LLVM_ISel clang_o1 841990.3333333334
+tramp3d-v4 LLVM_OtherPasses clang_o1 380549.0
+tramp3d-v4 LLVM_PostRA clang_o1 743227.6666666666
+tramp3d-v4 LLVM_PreISel clang_o1 1389566.0
+tramp3d-v4 LLVM_PreRA clang_o1 671795.0
+tramp3d-v4 LLVM_RA clang_o1 618307.3333333334
+tramp3d-v4 codegen clang_o1 5293101.666666667
+tramp3d-v4 total clang_o1 0.0
+tramp3d-v4 analysis tpde 100858.0
+tramp3d-v4 codegen tpde 138603.33333333334
+tramp3d-v4 emit_obj tpde 410.0
+tramp3d-v4 global_gen tpde 196.66666666666666
+tramp3d-v4 prepass tpde 6970.0
+tramp3d-v4 total tpde 0.0
+tramp3d-v4 tpde_cg tpde 28896.0
+tramp3d-v4 tpde_pl tpde 64614.0
+tramp3d-v4 tpde_spill tpde 32356.333333333332
+tramp3d-v4 analysis tpde_old 2699.6666666666665
+tramp3d-v4 codegen tpde_old 20534.0
+tramp3d-v4 emit_obj tpde_old 325.6666666666667
+tramp3d-v4 global_gen tpde_old 193.66666666666666
+tramp3d-v4 prepass tpde_old 6798.333333333333
+tramp3d-v4 total tpde_old 0.0
+tramp3d-v4 tpde_cg tpde_old 9589.0
+Trimaran LLVM_AsmPrinter clang_o0 8832.0
+Trimaran LLVM_FreeMF clang_o0 211.0
+Trimaran LLVM_ISel clang_o0 28887.333333333332
+Trimaran LLVM_OtherPasses clang_o0 2347.6666666666665
+Trimaran LLVM_PostRA clang_o0 14972.333333333334
+Trimaran LLVM_PreISel clang_o0 13770.0
+Trimaran LLVM_PreRA clang_o0 76.33333333333333
+Trimaran LLVM_RA clang_o0 5222.666666666667
+Trimaran codegen clang_o0 85121.66666666667
+Trimaran total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+Trimaran LLVM_AsmPrinter clang_o1 4912.0
+Trimaran LLVM_FreeMF clang_o1 140.0
+Trimaran LLVM_ISel clang_o1 108149.0
+Trimaran LLVM_OtherPasses clang_o1 18090.333333333332
+Trimaran LLVM_PostRA clang_o1 16825.0
+Trimaran LLVM_PreISel clang_o1 44084.333333333336
+Trimaran LLVM_PreRA clang_o1 47741.0
+Trimaran LLVM_RA clang_o1 21770.0
+Trimaran codegen clang_o1 272702.3333333333
+Trimaran total clang_o1 0.0
+Trimaran analysis tpde 4228.333333333333
+Trimaran codegen tpde 6546.666666666667
+Trimaran emit_obj tpde 42.333333333333336
+Trimaran global_gen tpde 132.33333333333334
+Trimaran prepass tpde 163.0
+Trimaran total tpde 0.0
+Trimaran tpde_cg tpde 1747.6666666666667
+Trimaran tpde_pl tpde 1995.0
+Trimaran tpde_spill tpde 1994.6666666666667
+Trimaran analysis tpde_old 205.33333333333334
+Trimaran codegen tpde_old 1912.0
+Trimaran emit_obj tpde_old 32.666666666666664
+Trimaran global_gen tpde_old 132.33333333333334
+Trimaran prepass tpde_old 159.66666666666666
+Trimaran total tpde_old 0.0
+Trimaran tpde_cg tpde_old 1155.3333333333333
+TSVC LLVM_AsmPrinter clang_o0 314626.3333333333
+TSVC LLVM_FreeMF clang_o0 2901.3333333333335
+TSVC LLVM_ISel clang_o0 602144.6666666666
+TSVC LLVM_OtherPasses clang_o0 69246.66666666667
+TSVC LLVM_PostRA clang_o0 463470.3333333333
+TSVC LLVM_PreISel clang_o0 268354.6666666667
+TSVC LLVM_PreRA clang_o0 412.3333333333333
+TSVC LLVM_RA clang_o0 93040.33333333333
+TSVC codegen clang_o0 1951171.6666666667
+TSVC total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+TSVC LLVM_AsmPrinter clang_o1 292371.3333333333
+TSVC LLVM_FreeMF clang_o1 5223.666666666667
+TSVC LLVM_ISel clang_o1 727560.6666666666
+TSVC LLVM_OtherPasses clang_o1 354065.0
+TSVC LLVM_PostRA clang_o1 464886.0
+TSVC LLVM_PreISel clang_o1 2863454.0
+TSVC LLVM_PreRA clang_o1 473907.0
+TSVC LLVM_RA clang_o1 503877.3333333333
+TSVC codegen clang_o1 5820743.333333333
+TSVC total clang_o1 0.0
+TSVC analysis tpde 83302.0
+TSVC codegen tpde 146660.0
+TSVC emit_obj tpde 354.0
+TSVC global_gen tpde 2026.3333333333333
+TSVC prepass tpde 6712.333333333333
+TSVC total tpde 0.0
+TSVC tpde_cg tpde 51849.0
+TSVC tpde_pl tpde 39990.666666666664
+TSVC tpde_spill tpde 36747.666666666664
+TSVC analysis tpde_old 6415.0
+TSVC codegen tpde_old 40575.666666666664
+TSVC emit_obj tpde_old 553.6666666666666
+TSVC global_gen tpde_old 2133.6666666666665
+TSVC prepass tpde_old 6490.333333333333
+TSVC total tpde_old 0.0
+TSVC tpde_cg tpde_old 22293.0
+VersaBench LLVM_AsmPrinter clang_o0 16034.666666666666
+VersaBench LLVM_FreeMF clang_o0 476.3333333333333
+VersaBench LLVM_ISel clang_o0 33691.333333333336
+VersaBench LLVM_OtherPasses clang_o0 4231.666666666667
+VersaBench LLVM_PostRA clang_o0 25361.666666666668
+VersaBench LLVM_PreISel clang_o0 35129.333333333336
+VersaBench LLVM_PreRA clang_o0 227.0
+VersaBench LLVM_RA clang_o0 7640.333333333333
+VersaBench codegen clang_o0 149494.0
+VersaBench total clang_o0 0.0
+WARNING: unmapped pass Simplify the CFG
+WARNING: unmapped pass Loop Data Prefetch
+WARNING: unmapped pass Falkor HW Prefetch Fix
+WARNING: unmapped pass Memory SSA
+WARNING: unmapped pass Interleaved Load Combine Pass
+WARNING: unmapped pass Type Promotion
+WARNING: unmapped pass Merge internal globals
+WARNING: unmapped pass AArch64 Local Dynamic TLS Access Clean-up
+WARNING: unmapped pass SME Peephole Optimization pass
+WARNING: unmapped pass AArch64 Condition Optimizer
+WARNING: unmapped pass AArch64 Conditional Compares
+WARNING: unmapped pass AArch64 Conditional Branch Tuning
+WARNING: unmapped pass AArch64 Store Pair Suppression
+WARNING: unmapped pass AArch64 SIMD instructions optimization pass
+WARNING: unmapped pass AArch64 Stack Tagging PreRA
+WARNING: unmapped pass AArch64 MI Peephole Optimization pass
+WARNING: unmapped pass AArch64 Dead register definitions
+WARNING: unmapped pass AArch64 Post Coalescer pass
+WARNING: unmapped pass AArch64 Redundant Copy Elimination
+WARNING: unmapped pass A57 FP Anti-dependency breaker
+WARNING: unmapped pass AArch64 load / store optimization pass
+WARNING: unmapped pass Falkor HW Prefetch Fix Late Phase
+WARNING: unmapped pass PostRA Machine Instruction Scheduler
+WARNING: unmapped pass AArch64 Compress Jump Tables
+VersaBench LLVM_AsmPrinter clang_o1 12892.0
+VersaBench LLVM_FreeMF clang_o1 419.0
+VersaBench LLVM_ISel clang_o1 84252.66666666667
+VersaBench LLVM_OtherPasses clang_o1 28108.333333333332
+VersaBench LLVM_PostRA clang_o1 37096.333333333336
+VersaBench LLVM_PreISel clang_o1 80673.0
+VersaBench LLVM_PreRA clang_o1 80552.0
+VersaBench LLVM_RA clang_o1 39005.666666666664
+VersaBench codegen clang_o1 394558.0
+VersaBench total clang_o1 0.0
+VersaBench analysis tpde 5494.333333333333
+VersaBench codegen tpde 11606.666666666666
+VersaBench emit_obj tpde 96.66666666666667
+VersaBench global_gen tpde 250.33333333333334
+VersaBench prepass tpde 327.6666666666667
+VersaBench total tpde 0.0
+VersaBench tpde_cg tpde 4300.0
+VersaBench tpde_pl tpde 2787.3333333333335
+VersaBench tpde_spill tpde 2137.0
+VersaBench analysis tpde_old 407.0
+VersaBench codegen tpde_old 4760.333333333333
+VersaBench emit_obj tpde_old 82.0
+VersaBench global_gen tpde_old 274.3333333333333
+VersaBench prepass tpde_old 297.6666666666667
+VersaBench total tpde_old 0.0
+VersaBench tpde_cg tpde_old 2521.6666666666665
