@@ -11,6 +11,7 @@ import numpy as np
 
 
 PREFERRED_VARIANT_ORDER = ["tpde_old", "tpde", "clang_o0", "clang_o1"]
+IGNORED_EVENTS = {"tpde_pl", "tpde_spill"}
 
 
 def parse_args() -> argparse.Namespace:
@@ -57,6 +58,8 @@ def parse_results(path: Path, metric: str) -> dict[str, dict[str, float]]:
                 continue
 
             benchmark, pass_name, variant, value_str = parts[:4]
+            if pass_name in IGNORED_EVENTS:
+                continue
             if pass_name != metric:
                 continue
 
