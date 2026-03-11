@@ -9,13 +9,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+ARCHITECTURES = ("x86_64", "aarch64")
 BASELINE = "o1ir-clang"
 TARGET = "o1-clang"
 VARIANT_FILES = {
-    BASELINE: "res-spec-raw-rt-o1ir-x86_64-clang",
-    TARGET: "res-spec-raw-rt-o1-x86_64-clang",
-    "tpde": "res-spec-raw-rt-o1ir-x86_64-tpde",
-    "tpde-old": "res-spec-raw-rt-o1ir-x86_64-tpde-old",
+    BASELINE: "res-spec-raw-rt-o1ir-{arch}-clang",
+    TARGET: "res-spec-raw-rt-o1-{arch}-clang",
+    "tpde": "res-spec-raw-rt-o1ir-{arch}-tpde",
+    "tpde-old": "res-spec-raw-rt-o1ir-{arch}-tpde-old",
 }
 COMPARE_COLUMNS = [TARGET, "tpde", "tpde-old"]
 
@@ -35,17 +36,34 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        default="charts/spec_rt_closeness_to_clangO1_from_clangO0.png",
+        default="charts/spec_rt_closeness_to_clangO1_from_clangO0_{arch}.png",
         help=(
             "Output plot path "
-            "(default: charts/spec_rt_closeness_to_clangO1_from_clangO0.png)"
+            "(default: charts/spec_rt_closeness_to_clangO1_from_clangO0_{arch}.png)"
         ),
+    )
+    parser.add_argument(
+        "--architectures",
+        nargs="+",
+        default=list(ARCHITECTURES),
+        help="Architectures to plot (default: x86_64 aarch64)",
     )
     return parser.parse_args()
 
 
 def normalize_input_path(path_text: str) -> Path:
     return Path(path_text[1:] if path_text.startswith("@") else path_text)
+
+
+def output_path_for_arch(path_text: str, arch: str) -> Path:
+    normalized = path_text[1:] if path_text.startswith("@") else path_text
+    if "{arch}" in normalized:
+        return Path(normalized.format(arch=arch))
+    for token in ARCHITECTURES:
+        if token in normalized:
+            return Path(normalized.replace(token, arch))
+    base = Path(normalized)
+    return base.with_name(f"{base.stem}_{arch}{base.suffix}")
 
 
 def parse_raw_runtime_file(path: Path) -> dict[str, float]:
@@ -84,9 +102,9 @@ def geometric_mean(values: list[float]) -> float | None:
     return float(np.exp(np.mean(np.log(values))))
 
 
-def parse_rows(input_dir: Path) -> tuple[list[str], dict[str, list[float]]]:
+def parse_rows(input_dir: Path, arch: str) -> tuple[list[str], dict[str, list[float]]]:
     runtime_tables = {
-        name: parse_raw_runtime_file(input_dir / filename)
+        name: parse_raw_runtime_file(input_dir / filename.format(arch=arch))
         for name, filename in VARIANT_FILES.items()
     }
 
@@ -148,55 +166,62 @@ def parse_rows(input_dir: Path) -> tuple[list[str], dict[str, list[float]]]:
 def main() -> None:
     args = parse_args()
     input_dir = normalize_input_path(args.input_dir)
-    output_path = Path(args.output)
 
     if not input_dir.exists():
         raise FileNotFoundError(f"Input directory not found: {input_dir}")
 
-    missing_files = [
-        filename
-        for filename in VARIANT_FILES.values()
-        if not (input_dir / filename).exists()
-    ]
-    if missing_files:
-        missing_text = ", ".join(sorted(missing_files))
-        raise FileNotFoundError(
-            f"Missing required input files in {input_dir}: {missing_text}"
+    outputs: list[Path] = []
+    for arch in args.architectures:
+        output_path = output_path_for_arch(args.output, arch)
+        missing_files = [
+            filename.format(arch=arch)
+            for filename in VARIANT_FILES.values()
+            if not (input_dir / filename.format(arch=arch)).exists()
+        ]
+        if missing_files:
+            missing_text = ", ".join(sorted(missing_files))
+            raise FileNotFoundError(
+                f"Missing required input files for {arch} in {input_dir}: {missing_text}"
+            )
+
+        benchmarks, closeness = parse_rows(input_dir, arch)
+        if not benchmarks:
+            raise RuntimeError(
+                "No valid SPEC rows with complete data for all variants and positive baseline-target gap"
+            )
+
+        x = np.arange(len(benchmarks))
+        n_var = len(COMPARE_COLUMNS)
+        width = min(0.8 / n_var, 0.3)
+
+        plt.figure(figsize=(max(10, len(benchmarks) * 0.75), 6))
+
+        for idx, variant in enumerate(COMPARE_COLUMNS):
+            offset = (idx - (n_var - 1) / 2.0) * width
+            plt.bar(x + offset, closeness[variant], width=width, label=variant)
+
+        plt.axhline(0.0, color="gray", linestyle="--", linewidth=1)
+        plt.axhline(
+            100.0, color="black", linestyle="--", linewidth=1, label=f"{TARGET} target"
         )
-
-    benchmarks, closeness = parse_rows(input_dir)
-    if not benchmarks:
-        raise RuntimeError(
-            "No valid SPEC rows with complete data for all variants and positive baseline-target gap"
+        plt.ylabel(f"Closeness to {TARGET} runtime (%) from {BASELINE} baseline")
+        plt.xlabel("SPEC benchmark")
+        plt.title(
+            f"SPEC runtime closeness to {TARGET} ({BASELINE} -> {TARGET} scale) ({arch})"
         )
+        plt.xticks(x, benchmarks, rotation=45, ha="right")
+        plt.legend()
+        plt.tight_layout()
 
-    x = np.arange(len(benchmarks))
-    n_var = len(COMPARE_COLUMNS)
-    width = min(0.8 / n_var, 0.3)
+        if output_path.parent and output_path.parent != Path("."):
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=220)
+        plt.close()
+        outputs.append(output_path)
 
-    plt.figure(figsize=(max(10, len(benchmarks) * 0.75), 6))
+        print(f"Wrote {output_path} for {len(benchmarks)} benchmarks")
 
-    for idx, variant in enumerate(COMPARE_COLUMNS):
-        offset = (idx - (n_var - 1) / 2.0) * width
-        plt.bar(x + offset, closeness[variant], width=width, label=variant)
-
-    plt.axhline(0.0, color="gray", linestyle="--", linewidth=1)
-    plt.axhline(
-        100.0, color="black", linestyle="--", linewidth=1, label=f"{TARGET} target"
-    )
-    plt.ylabel(f"Closeness to {TARGET} runtime (%) from {BASELINE} baseline")
-    plt.xlabel("SPEC benchmark")
-    plt.title(f"SPEC runtime closeness to {TARGET} ({BASELINE} -> {TARGET} scale)")
-    plt.xticks(x, benchmarks, rotation=45, ha="right")
-    plt.legend()
-    plt.tight_layout()
-
-    if output_path.parent and output_path.parent != Path("."):
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=220)
-    plt.close()
-
-    print(f"Wrote {output_path} for {len(benchmarks)} benchmarks")
+    print(f"Done. Wrote {len(outputs)} plot(s).")
 
 
 if __name__ == "__main__":

@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+ARCHITECTURES = ["x86_64"]
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description=(
@@ -18,25 +21,47 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--o1ir",
-        default="charts/res-spec-raw-ct-o1ir-x86_64",
-        help="Path to o1ir compile-time results (default: charts/res-spec-raw-ct-o1ir-x86_64)",
+        default="charts/res-spec-raw-ct-o1ir-{arch}",
+        help="Path to o1ir compile-time results (default: charts/res-spec-raw-ct-o1ir-{arch})",
     )
     parser.add_argument(
         "--o1",
-        default="charts/res-spec-raw-ct-o1-x86_64",
-        help="Path to o1 compile-time results (default: charts/res-spec-raw-ct-o1-x86_64)",
+        default="charts/res-spec-raw-ct-o1-{arch}",
+        help="Path to o1 compile-time results (default: charts/res-spec-raw-ct-o1-{arch})",
     )
     parser.add_argument(
         "--ra-output",
-        default="charts/spec_ct_ra_vs_tpde_analysis.png",
+        default="charts/spec_ct_ra_vs_tpde_analysis_{arch}.png",
         help="Output path for LLVM_RA/analysis plot",
     )
     parser.add_argument(
         "--codegen-output",
-        default="charts/spec_ct_codegen_4variants.png",
+        default="charts/spec_ct_codegen_4variants_{arch}.png",
         help="Output path for codegen comparison plot",
     )
+    parser.add_argument(
+        "--architectures",
+        nargs="+",
+        default=ARCHITECTURES,
+        help="Architectures to plot (default: x86_64 aarch64)",
+    )
     return parser.parse_args()
+
+
+def path_for_arch(path_text: str, arch: str) -> Path:
+    if "{arch}" in path_text:
+        return Path(path_text.format(arch=arch))
+    for token in ARCHITECTURES:
+        if token in path_text:
+            return Path(path_text.replace(token, arch))
+    return Path(path_text)
+
+
+def output_path_for_arch(path_text: str, arch: str) -> Path:
+    base = path_for_arch(path_text, arch)
+    if "{arch}" in path_text:
+        return base
+    return base.with_name(f"{base.stem}_{arch}{base.suffix}")
 
 
 def benchmark_sort_key(name: str) -> tuple[int, str]:
@@ -83,6 +108,7 @@ def collect_ra_analysis(
         (("analysis", "tpde_old"), "tpde-old analysis"),
         (("tpde_pl", "tpde"), "tpde pl"),
         (("tpde_spill", "tpde"), "tpde spill"),
+        (("analysis","tpde"), "tpde analysis")
     ]
 
     benches = sorted(set(o1ir) & set(o1), key=benchmark_sort_key)
@@ -92,6 +118,7 @@ def collect_ra_analysis(
         "tpde-old analysis": [],
         "tpde pl": [],
         "tpde spill": [],
+        "tpde rest":[],
     }
     selected_benches: list[str] = []
 
@@ -110,6 +137,7 @@ def collect_ra_analysis(
         out["tpde-old analysis"].append(row_o1ir[("analysis", "tpde_old")])
         out["tpde pl"].append(row_o1ir[("tpde_pl", "tpde")])
         out["tpde spill"].append(row_o1ir[("tpde_spill", "tpde")])
+        out["tpde rest"].append(row_o1ir[("analysis","tpde")]- row_o1ir[("tpde_pl", "tpde")] - row_o1ir[("tpde_spill", "tpde")])
 
     if selected_benches:
         selected_benches.insert(0, "geomean")
@@ -163,7 +191,7 @@ def collect_codegen(
 
 
 def save_ra_analysis_plot(
-    benches: list[str], values: dict[str, list[float]], output: Path
+    benches: list[str], values: dict[str, list[float]], output: Path, arch: str
 ) -> None:
     x = np.arange(len(benches))
     width = 0.18
@@ -184,14 +212,22 @@ def save_ra_analysis_plot(
 
     pl = np.array(values["tpde pl"], dtype=float)
     spill = np.array(values["tpde spill"], dtype=float)
+    rest = np.array(values["tpde rest"], dtype=float)
     plt.bar(x + 1.5 * width, pl, width=width, label="tpde analysis: pl")
     plt.bar(
         x + 1.5 * width, spill, width=width, bottom=pl, label="tpde analysis: spill"
     )
+    plt.bar(
+        x + 1.5 * width,
+        rest,
+        width=width,
+        bottom=pl + spill,
+        label="tpde analysis: rest",
+    )
 
     plt.ylabel("Compile time (ms)")
     plt.xlabel("SPEC benchmark")
-    plt.title("LLVM_RA vs TPDE analysis components")
+    plt.title(f"LLVM_RA vs TPDE analysis components ({arch})")
     plt.xticks(x, benches, rotation=45, ha="right")
     plt.yscale("log")
     plt.legend()
@@ -204,7 +240,7 @@ def save_ra_analysis_plot(
 
 
 def save_codegen_plot(
-    benches: list[str], values: dict[str, list[float]], output: Path
+    benches: list[str], values: dict[str, list[float]], output: Path, arch: str
 ) -> None:
     variants = ["clangO0", "clangO1", "tpde-old", "tpde"]
     x = np.arange(len(benches))
@@ -217,7 +253,7 @@ def save_codegen_plot(
 
     plt.ylabel("Codegen time (ms)")
     plt.xlabel("SPEC benchmark")
-    plt.title("Codegen comparison across 4 variants")
+    plt.title(f"Codegen comparison across 4 variants ({arch})")
     plt.xticks(x, benches, rotation=45, ha="right")
     plt.yscale("log")
     plt.legend()
@@ -231,28 +267,38 @@ def save_codegen_plot(
 
 def main() -> None:
     args = parse_args()
-    o1ir_path = Path(args.o1ir)
-    o1_path = Path(args.o1)
+    outputs: list[tuple[Path, Path]] = []
+    print(args.architectures)
+    for arch in ["x86_64"]:
+        if arch not in ARCHITECTURES:
+            continue
+        o1ir_path = path_for_arch(args.o1ir, arch)
+        o1_path = path_for_arch(args.o1, arch)
+        ra_output = output_path_for_arch(args.ra_output, arch)
+        codegen_output = output_path_for_arch(args.codegen_output, arch)
 
-    if not o1ir_path.exists():
-        raise FileNotFoundError(f"Input file not found: {o1ir_path}")
-    if not o1_path.exists():
-        raise FileNotFoundError(f"Input file not found: {o1_path}")
+        if not o1ir_path.exists():
+            raise FileNotFoundError(f"Input file not found for {arch}: {o1ir_path}")
+        if not o1_path.exists():
+            raise FileNotFoundError(f"Input file not found for {arch}: {o1_path}")
 
-    o1ir = parse_ct_file(o1ir_path)
-    o1 = parse_ct_file(o1_path)
+        o1ir = parse_ct_file(o1ir_path)
+        o1 = parse_ct_file(o1_path)
 
-    ra_benches, ra_values = collect_ra_analysis(o1ir, o1)
-    if not ra_benches:
-        raise RuntimeError("No complete rows found for LLVM_RA/analysis plot")
-    save_ra_analysis_plot(ra_benches, ra_values, Path(args.ra_output))
+        ra_benches, ra_values = collect_ra_analysis(o1ir, o1)
+        if not ra_benches:
+            raise RuntimeError("No complete rows found for LLVM_RA/analysis plot")
+        save_ra_analysis_plot(ra_benches, ra_values, ra_output, arch)
 
-    codegen_benches, codegen_values = collect_codegen(o1ir, o1)
-    if not codegen_benches:
-        raise RuntimeError("No complete rows found for codegen plot")
-    save_codegen_plot(codegen_benches, codegen_values, Path(args.codegen_output))
+        codegen_benches, codegen_values = collect_codegen(o1ir, o1)
+        if not codegen_benches:
+            raise RuntimeError("No complete rows found for codegen plot")
+        save_codegen_plot(codegen_benches, codegen_values, codegen_output, arch)
+        outputs.append((ra_output, codegen_output))
 
-    print(f"Wrote {args.ra_output} and {args.codegen_output}")
+        print(f"Wrote {ra_output} and {codegen_output}")
+
+    print(f"Done. Wrote {2 * len(outputs)} plot(s).")
 
 
 if __name__ == "__main__":

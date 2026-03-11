@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
+ARCHITECTURES = ("x86_64", "aarch64")
 TEXT_TPDE_RE = re.compile(r"^(\d+)\s+text\s+tpde:\s+([0-9+]+)\s*$")
 TEXT_TPDE_OLD_RE = re.compile(r"^(\d+)\s+text\s+tpde-old:\s+([0-9+]+)\s*$")
 
@@ -34,13 +35,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "input",
         nargs="?",
-        default="charts/res-spec-raw-ct-o1-x86_64",
+        default="charts/res-spec-raw-ct-o1-{arch}",
         help="input results file (default: %(default)s)",
     )
     parser.add_argument(
         "--output",
-        default="charts/text_size_tpde_vs_tpde_old.png",
+        default="charts/text_size_tpde_vs_tpde_old_{arch}.png",
         help="output image path (default: %(default)s)",
+    )
+    parser.add_argument(
+        "--architectures",
+        nargs="+",
+        default=list(ARCHITECTURES),
+        help="Architectures to plot (default: x86_64 aarch64)",
     )
     return parser.parse_args()
 
@@ -49,6 +56,23 @@ def normalize_input_path(path_text: str) -> Path:
     # Allow CLI-style @file shorthand.
     normalized = path_text[1:] if path_text.startswith("@") else path_text
     return Path(normalized)
+
+
+def path_for_arch(path_text: str, arch: str) -> Path:
+    normalized = path_text[1:] if path_text.startswith("@") else path_text
+    if "{arch}" in normalized:
+        return Path(normalized.format(arch=arch))
+    for token in ARCHITECTURES:
+        if token in normalized:
+            return Path(normalized.replace(token, arch))
+    return Path(normalized)
+
+
+def output_path_for_arch(path_text: str, arch: str) -> Path:
+    base_path = path_for_arch(path_text, arch)
+    if "{arch}" in path_text:
+        return base_path
+    return base_path.with_name(f"{base_path.stem}_{arch}{base_path.suffix}")
 
 
 def parse_text_sizes(path: Path) -> list[tuple[str, int, int]]:
@@ -85,43 +109,47 @@ def parse_text_sizes(path: Path) -> list[tuple[str, int, int]]:
 
 def main() -> None:
     args = parse_args()
-    input_path = normalize_input_path(args.input)
-    output_path = Path(args.output)
+    outputs: list[Path] = []
+    for arch in args.architectures:
+        input_path = path_for_arch(args.input, arch)
+        output_path = output_path_for_arch(args.output, arch)
 
-    if not input_path.exists():
-        raise FileNotFoundError(f"Input file not found: {input_path}")
+        if not input_path.exists():
+            raise FileNotFoundError(f"Input file not found for {arch}: {input_path}")
 
-    rows = parse_text_sizes(input_path)
+        rows = parse_text_sizes(input_path)
 
-    ratios: list[float] = []
-    for bench, tpde, old in rows:
-        ratio = tpde / old
-        ratios.append(ratio)
+        ratios: list[float] = []
+        for _bench, tpde, old in rows:
+            ratios.append(tpde / old)
 
-    gm = geomean(ratios)
-    labels = ["geomean"] + [bench for bench, _, _ in rows]
-    values = [gm] + ratios
+        gm = geomean(ratios)
+        labels = ["geomean"] + [bench for bench, _, _ in rows]
+        values = [gm] + ratios
 
-    x = np.arange(len(labels))
-    plt.figure(figsize=(max(10, len(labels) * 0.5), 6))
-    plt.bar(x, values, width=0.7, color="steelblue")
-    plt.axhline(1.0, color="black", linestyle="--", linewidth=1)
-    plt.yscale("log")
-    plt.ylabel("Text size ratio (tpde / tpde-old)")
-    plt.xlabel("SPEC benchmark")
-    plt.title("TPDE text size vs TPDE-old")
-    plt.xticks(x, labels, rotation=75, ha="right")
-    plt.tight_layout()
+        x = np.arange(len(labels))
+        plt.figure(figsize=(max(10, len(labels) * 0.5), 6))
+        plt.bar(x, values, width=0.7, color="steelblue")
+        plt.axhline(1.0, color="black", linestyle="--", linewidth=1)
+        plt.yscale("log")
+        plt.ylabel("Text size ratio (tpde / tpde-old)")
+        plt.xlabel("SPEC benchmark")
+        plt.title(f"TPDE text size vs TPDE-old ({arch})")
+        plt.xticks(x, labels, rotation=75, ha="right")
+        plt.tight_layout()
 
-    if output_path.parent and output_path.parent != Path("."):
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-    plt.savefig(output_path, dpi=220)
-    plt.close()
+        if output_path.parent and output_path.parent != Path("."):
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+        plt.savefig(output_path, dpi=220)
+        plt.close()
+        outputs.append(output_path)
 
-    print(
-        f"Wrote {output_path} for {len(rows)} benchmarks "
-        f"(geomean tpde/tpde-old: {gm:.6f})"
-    )
+        print(
+            f"Wrote {output_path} for {len(rows)} benchmarks "
+            f"(geomean tpde/tpde-old: {gm:.6f})"
+        )
+
+    print(f"Done. Wrote {len(outputs)} plot(s).")
 
 
 if __name__ == "__main__":
