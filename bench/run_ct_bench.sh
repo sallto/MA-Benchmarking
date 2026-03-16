@@ -31,7 +31,7 @@ TPDE_OLD_CFG_PATH="${SPEC_DIR}/config/${ARCH}-tpde-old-ct.cfg"
 BENCH_NUMBERS=("600" "602" "605" "620" "623" "625" "631" "641" "648" "657")
 BENCH_NAMES=("perlbench" "gcc" "mcf" "omnetpp" "xalancbmk" "x264" "deepsjeng" "leela" "exchange2" "xz")
 
-RUN_COUNT=2
+RUN_COUNT=3
 
 rm -f "${SCRIPT_DIR}/$OUT_FILE"
 
@@ -112,7 +112,7 @@ for idx in ${!BENCH_NUMBERS[@]}; do
         TEXT_SIZE_CLANG=$TEXT_SIZE_CLANG1+$TEXT_SIZE_CLANG2+$TEXT_SIZE_CLANG3
         TEXT_SIZE_TPDE=$TEXT_SIZE_TPDE1+$TEXT_SIZE_TPDE2+$TEXT_SIZE_TPDE3
         TEXT_SIZE_TPDE_OLD=$TEXT_SIZE_TPDE_OLD1+$TEXT_SIZE_TPDE_OLD2+$TEXT_SIZE_TPDE_OLD3
-	TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",(${TEXT_SIZE_TPDE})/(${TEXT_SIZE_CLANG})}")
+	TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",(${TEXT_SIZE_TPDE})/(${TEXT_SIZE_TPDE_OLD})}")
         echo "${BENCH_NUMBERS[$idx]} text clang: $TEXT_SIZE_CLANG" >> "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde: $TEXT_SIZE_TPDE" >> "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde-old: $TEXT_SIZE_TPDE_OLD" >> "${SCRIPT_DIR}/${OUT_FILE}"
@@ -122,7 +122,7 @@ for idx in ${!BENCH_NUMBERS[@]}; do
         TEXT_SIZE_CLANG=$(size -A -d "${CLANG_BUILD_DIR}/exchange2.fppized.o" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE=$(size -A -d "${TPDE_BUILD_DIR}/exchange2.fppized.o" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE_OLD=$(size -A -d "${TPDE_OLD_BUILD_DIR}/exchange2.fppized.o" | grep ".text" | awk '{print $2}')
-        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_CLANG}}")
+        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_TPDE_OLD}}")
         echo "${BENCH_NUMBERS[$idx]} text clang: $TEXT_SIZE_CLANG" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde: $TEXT_SIZE_TPDE" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde-old: $TEXT_SIZE_TPDE_OLD" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
@@ -131,7 +131,7 @@ for idx in ${!BENCH_NUMBERS[@]}; do
         TEXT_SIZE_CLANG=$(size -A -d "${CLANG_BUILD_DIR}/sgcc" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE=$(size -A -d "${TPDE_BUILD_DIR}/sgcc" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE_OLD=$(size -A -d "${TPDE_OLD_BUILD_DIR}/sgcc" | grep ".text" | awk '{print $2}')
-        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_CLANG}}")
+        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_TPDE_OLD}}")
         echo "${BENCH_NUMBERS[$idx]} text clang: $TEXT_SIZE_CLANG" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde: $TEXT_SIZE_TPDE" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde-old: $TEXT_SIZE_TPDE_OLD" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
@@ -140,7 +140,7 @@ for idx in ${!BENCH_NUMBERS[@]}; do
         TEXT_SIZE_CLANG=$(size -A -d "${CLANG_BUILD_DIR}/${BENCH_NAMES[$idx]}_s" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE=$(size -A -d "${TPDE_BUILD_DIR}/${BENCH_NAMES[$idx]}_s" | grep ".text" | awk '{print $2}')
         TEXT_SIZE_TPDE_OLD=$(size -A -d "${TPDE_OLD_BUILD_DIR}/${BENCH_NAMES[$idx]}_s" | grep ".text" | awk '{print $2}')
-        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_CLANG}}")
+        TEXT_RATIO=$(awk "BEGIN{printf \"%.2f\n\",${TEXT_SIZE_TPDE}/${TEXT_SIZE_TPDE_OLD}}")
         echo "${BENCH_NUMBERS[$idx]} text clang: $TEXT_SIZE_CLANG" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde: $TEXT_SIZE_TPDE" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
         echo "${BENCH_NUMBERS[$idx]} text tpde-old: $TEXT_SIZE_TPDE_OLD" | tee -a "${SCRIPT_DIR}/${OUT_FILE}"
