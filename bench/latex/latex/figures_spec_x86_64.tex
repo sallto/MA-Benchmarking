@@ -1,0 +1,219 @@
+\input{figures_common_x86_64.tex}
+
+\section{LLVM SPEC X86-64}
+
+\begin{figure}[H]
+\resizebox{\linewidth}{!}{
+  \begin{tikzpicture}
+    \begin{groupplot}[
+    group style={group size=3 by 1,horizontal sep=7pt,},
+      xbar=0pt,
+      symbolic y coords = {
+        600.perl,
+        602.gcc,
+        605.mcf,
+        620.omnetpp,
+        623.xalanc,
+        625.x264,
+        631.deepsjeng,
+        641.leela,
+        648.exchange2,
+        657.xz,
+        geomean
+      },
+      y dir=reverse,
+      enlarge y limits=0.05,
+      ytick=data,
+      ytick pos=bottom,
+      cycle list={%
+        %TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+        TLlightyellow!30!black,fill=TLlightyellow,mark=none,postaction={pattern=north east lines}\\%
+        TLpink!30!black,fill=TLpink,mark=none\\%
+        TLlightyellow!30!black,fill=TLlightyellow,mark=none\\%
+        TLlightcyan!30!black,fill=TLlightcyan,mark=none\\%
+        TLolive!30!black,fill=TLolive,mark=none\\%
+        TLmint!30!black,fill=TLmint,mark=none\\%
+        TLpear!30!black,fill=TLpear,mark=none\\%
+        TLpalegray!30!black,fill=TLpalegray,mark=none\\%
+        TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+      },
+      legend style={font=\small,legend columns=-1,reverse legend,draw=none,
+        at={(1,1)},yshift=6ex,
+        anchor=south east,},
+      legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.25cm,0.15cm); },
+      height=6.2cm,
+      every axis title/.style={anchor=south,at={(.5,1)},align=center},
+      ]
+
+      \nextgroupplot[
+        xmin=0,
+        xmax=34,
+        xmajorgrids=true,
+        xtick distance=5,
+        bar width=3pt,
+        width=4.2cm,
+        title={Compile-time\\Speedup},
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{x86_64-clang}/\thisrow{x86_64-tpde}] {bench-res/parsed-spec-ct};
+      \addplot table[y=benchmark,x=value,col sep=comma] {bench-res/parsed-spec-ct-copypatch};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A -| O1) -- (A -| O2);
+
+      \nextgroupplot[
+        xmax=1.2,
+        xmin=0,
+        xmajorgrids=true,
+        xtick distance=0.5,
+        bar width=3pt,
+        yticklabels={},
+        title={Run-time\\Speedup},
+        width=3.3cm,
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{x86_64-clang}/\thisrow{x86_64-tpde},col sep=comma] {bench-res/parsed-spec-rt};
+      \addplot table[y=benchmark,x=value,col sep=comma] {bench-res/parsed-spec-rt-copypatch};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A |- O1) -- (A |- O2);
+
+      \nextgroupplot[
+        xmax=1.7,
+        xmin=0,
+        xmajorgrids=true,
+        xtick distance=0.5,
+        bar width=3pt,
+        yticklabels={},
+        title={Code Size},
+        width=3.3cm,
+        nodes near coords boundcheckx,
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{x86_64-tpde}/\thisrow{x86_64-clang}] {bench-res/parsed-spec-text};
+      \addplot table[y=benchmark,x=value, col sep=comma] {bench-res/parsed-spec-text-copypatch};
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed] (A |- O1) -- (A |- O2);
+
+      \legend{
+        TPDE x86-64,
+        Copy-Patch x86-64
+      }
+
+    \end{groupplot}
+  \end{tikzpicture}
+}
+  \caption{Compile- and run-time speedup and code size normalized to LLVM \texttt{-O0} on SPECint 2017 with unoptimized LLVM-IR.
+  Compile-time is back-end time, excluding front-end and required LLVM-IR passes.}
+  \label{fig:llvm-ctrt}
+\end{figure}
+
+\begin{figure}[!h]
+\resizebox{\linewidth}{!}{
+  \begin{tikzpicture}
+    \begin{groupplot}[
+    group style={group size=2 by 1,horizontal sep=7pt,},
+      xbar=0pt,
+      symbolic y coords = {
+        600.perl,
+        602.gcc,
+        605.mcf,
+        620.omnetpp,
+        623.xalanc,
+        625.x264,
+        631.deepsjeng,
+        641.leela,
+        648.exchange2,
+        657.xz,
+        geomean
+      },
+      y dir=reverse,
+      enlarge y limits=0.05,
+      ytick=data,
+      ytick pos=bottom,
+      %yticklabels={},
+      cycle list={%
+        %TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+        %TLlightcyan!30!black,fill=TLlightcyan,mark=none,postaction={pattern=crosshatch dots}\\%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+        TLpear!30!black,fill=TLpear,mark=none,postaction={pattern=crosshatch dots}\\%
+        TLlightblue!30!black,fill=TLlightblue,mark=none\\%
+        TLlightcyan!30!black,fill=TLlightcyan,mark=none,postaction={pattern=crosshatch dots}\\%
+        TLorange!30!black,fill=TLorange,mark=none\\%
+        TLpear!30!black,fill=TLpear,mark=none,postaction={pattern=crosshatch dots}\\%
+      },
+      % xticklabel style={rotate=30,anchor=east,align=center,font=\LARGE},
+      % yticklabel style={font=\Large},
+      legend style={font=\small,legend columns=2,reverse legend,draw=none,
+        at={(0,1)},yshift=3ex,
+        anchor=south west,},
+      legend image code/.code={
+        \draw [#1] (0cm,-0.1cm) rectangle (0.25cm,0.15cm); },
+      height=7.6cm,
+      every axis title/.style={anchor=south,at={(.5,1)},align=center},
+      ]
+
+      \nextgroupplot[
+        xmode=log,
+        % xbar=0pt,
+        % ymin=0,
+        xmax=320,
+        xmajorgrids=true,
+        xminorgrids=true,
+        bar width=3pt,
+        width=5.5cm,
+      % nodes near coords boundcheckx,
+        title={Compile-time Speedup},
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{o1-x86_64-clang}/\thisrow{o1ir-x86_64-tpde}] {bench-res/parsed-spec-ct};
+      \addplot table[y=benchmark,x expr=\thisrow{o1-x86_64-clang}/\thisrow{o1ir-x86_64-clang}] {bench-res/parsed-spec-ct};
+
+      \legend{
+        TPDE x86-64,
+        LLVM -O0 x86-64
+      }
+
+      \nextgroupplot[
+        xmax=1.1,
+        xmin=0,
+        xmajorgrids=true,
+        xtick distance=0.2,
+        bar width=3pt,
+        yticklabels={},
+        title={Run-time Speedup},
+        width=4.6cm,
+      ]
+
+      \addplot table[y=benchmark,x expr=\thisrow{o1-x86_64-clang}/\thisrow{o1ir-x86_64-tpde},col sep=comma] {bench-res/parsed-spec-rt};
+      \addplot table[y=benchmark,x expr=\thisrow{o1-x86_64-clang}/\thisrow{o1ir-x86_64-clang},col sep=comma] {bench-res/parsed-spec-rt};
+
+
+      \coordinate (A) at (axis cs:1,geomean);
+      \coordinate (O1) at (rel axis cs:0,0);
+      \coordinate (O2) at (rel axis cs:0,1);
+
+      \draw [black,sharp plot,dashed,thick] (A |- O1) -- (A |- O2);
+
+    \end{groupplot}
+    \end{tikzpicture}
+
+}
+  \caption{Compile- and Run-time speedup normalized to the LLVM \texttt{-O1} back-end on SPECint 2017 with \texttt{-O1} IR.
+  Compile-time is back-end time, excluding front-end/optimizations.}
+  \label{fig:llvm-ctrt-opt}
+\end{figure}
+
+\end{document}
