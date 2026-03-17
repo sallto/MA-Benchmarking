@@ -142,34 +142,37 @@ def build_plots_for_arch(
         parsed = parse_times(path)
         if parsed:
             times_by_variant[variant] = parsed
-
-    if BASELINE_VARIANT not in times_by_variant:
-        print(f"[warn] missing baseline '{BASELINE_VARIANT}' for {arch}; skipping")
-        return None
-
     variants = sorted(times_by_variant.keys(), key=variant_sort_key)
     common_benches: set[str] = set(times_by_variant[variants[0]].keys())
     for variant in variants[1:]:
         common_benches &= set(times_by_variant[variant].keys())
 
+
+    bench_labels = sorted(common_benches, key=int)
+    if BASELINE_VARIANT not in times_by_variant:
+        print(f"[warn] missing baseline '{BASELINE_VARIANT}' for {arch}; skipping")
+
+
     if not common_benches:
         print(f"[warn] no common benchmarks across variants for {arch}; skipping")
         return None
-
-    bench_labels = sorted(common_benches, key=int)
     all_labels = ["geomean"] + bench_labels
 
     abs_series: dict[str, list[float]] = {}
     rel_series: dict[str, list[float]] = {}
-
-    baseline_values = [times_by_variant[BASELINE_VARIANT][b] for b in bench_labels]
-    baseline_geomean = geomean(baseline_values)
+    if BASELINE_VARIANT not in times_by_variant:
+        baseline_values = None 
+        baseline_geomean = None
+    else:
+        baseline_values = [times_by_variant[BASELINE_VARIANT][b] for b in bench_labels]
+        baseline_geomean = geomean(baseline_values)
 
     for variant in variants:
         absolute_vals = [times_by_variant[variant][b] for b in bench_labels]
         abs_gm = geomean(absolute_vals)
         abs_series[variant] = [abs_gm] + absolute_vals
-
+        if BASELINE_VARIANT not in times_by_variant:
+            continue
         if variant == BASELINE_VARIANT:
             rel_vals = [100.0 for _ in bench_labels]
             rel_gm = 100.0
@@ -184,16 +187,16 @@ def build_plots_for_arch(
 
     rel_out = output_dir / f"spec_rt_relative_to_o1_clang_{arch}.png"
     abs_out = output_dir / f"spec_rt_absolute_{arch}.png"
-
-    plot_grouped_bars(
-        labels=all_labels,
-        series=rel_series,
-        ylabel="Runtime (% of o1-clang, lower is better)",
-        title=f"SPEC RT relative to o1-clang (o1-clang = 100%) ({arch})",
-        output_path=rel_out,
-        yscale="linear",
-        hline=100.0,
-    )
+    if BASELINE_VARIANT in times_by_variant:
+        plot_grouped_bars(
+            labels=all_labels,
+            series=rel_series,
+            ylabel="Runtime (% of o1-clang, lower is better)",
+            title=f"SPEC RT relative to o1-clang (o1-clang = 100%) ({arch})",
+            output_path=rel_out,
+            yscale="linear",
+            hline=100.0,
+        )
     plot_grouped_bars(
         labels=all_labels,
         series=abs_series,
