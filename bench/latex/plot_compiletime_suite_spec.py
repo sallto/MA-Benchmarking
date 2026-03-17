@@ -733,15 +733,17 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
     delta_keys = [
         ("codegen", "tpde"),
         ("codegen", "tpde_old"),
-        ("LLVM_RA", "clang"),
     ]
     delta_benches = common_benches(bench_o0, values_o0, delta_keys)
+    delta_benches = [
+        b for b in delta_benches if ("LLVM_RA", "clang") in values_o1.get(b, {})
+    ]
     if delta_benches:
         delta = [
             values_o0[b][("codegen", "tpde")] - values_o0[b][("codegen", "tpde_old")]
             for b in delta_benches
         ]
-        llvm_ra = [values_o0[b][("LLVM_RA", "clang")] for b in delta_benches]
+        llvm_ra = [values_o1[b][("LLVM_RA", "clang")] for b in delta_benches]
         positive_rows = [
             (b, d, r)
             for b, d, r in zip(delta_benches, delta, llvm_ra)
@@ -753,13 +755,13 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
             labels_abs = ["geomean"] + delta_benches
             raw_series = {
                 "tpde codegen - tpde_old codegen": [d for _, d, _ in positive_rows],
-                "clang LLVM_RA (O0)": [r for _, _, r in positive_rows],
+                "clang LLVM_RA (O1)": [r for _, _, r in positive_rows],
             }
             series_abs = {
                 "tpde codegen - tpde_old codegen": with_geomean(
                     raw_series["tpde codegen - tpde_old codegen"]
                 ),
-                "clang LLVM_RA (O0)": with_geomean(raw_series["clang LLVM_RA (O0)"]),
+                "clang LLVM_RA (O1)": with_geomean(raw_series["clang LLVM_RA (O1)"]),
             }
             out = output_dir / f"ct_codegen_delta_vs_llvm_ra_spec_{arch}.png"
             plot_grouped(
