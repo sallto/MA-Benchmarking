@@ -104,6 +104,7 @@ def plot_grouped(
     output_path: Path,
     *,
     yscale: str = "log",
+    hline: float | None = None,
 ) -> None:
     names = list(series.keys())
     x = np.arange(len(labels))
@@ -113,6 +114,9 @@ def plot_grouped(
     for idx, name in enumerate(names):
         offset = (idx - (len(names) - 1) / 2.0) * width
         plt.bar(x + offset, series[name], width=width, label=name)
+
+    if hline is not None:
+        plt.axhline(hline, color="black", linestyle="--", linewidth=1)
 
     plt.yscale(yscale)
     plt.ylabel(ylabel)
@@ -134,7 +138,10 @@ def plot_analysis_breakdown(
     tpde_spill: list[float],
     tpde_other: list[float],
     title: str,
+    ylabel: str,
     output_path: Path,
+    *,
+    hline: float | None = None,
 ) -> None:
     x = np.arange(len(labels))
     width = 0.36
@@ -163,8 +170,11 @@ def plot_analysis_breakdown(
         label="tpde analysis: other",
     )
 
+    if hline is not None:
+        plt.axhline(hline, color="black", linestyle="--", linewidth=1)
+
     plt.yscale("log")
-    plt.ylabel("Compile time")
+    plt.ylabel(ylabel)
     plt.xlabel("Benchmark")
     plt.title(title)
     plt.xticks(x, labels, rotation=75, ha="right")
@@ -180,6 +190,45 @@ def emit_missing(prefix: str, arch: str, message: str) -> None:
     print(f"[warn] {prefix} ({arch}): {message}")
 
 
+def build_relative_series(
+    benches: list[str],
+    baseline_by_bench: dict[str, float],
+    raw_series: dict[str, list[float]],
+) -> tuple[list[str], dict[str, list[float]]]:
+    positive_benches = [
+        b for b in benches if b in baseline_by_bench and baseline_by_bench[b] > 0
+    ]
+    if not positive_benches:
+        return [], {}
+
+    rel_series: dict[str, list[float]] = {}
+    for name, values in raw_series.items():
+        by_bench = dict(zip(benches, values))
+        rel_values = [
+            (by_bench[b] / baseline_by_bench[b]) * 100.0 for b in positive_benches
+        ]
+        rel_series[name] = with_geomean(rel_values)
+
+    rel_series["clang_O1 baseline"] = [100.0 for _ in range(len(positive_benches) + 1)]
+    labels = ["geomean"] + positive_benches
+    return labels, rel_series
+
+
+def build_relative_list(
+    benches: list[str],
+    baseline_by_bench: dict[str, float],
+    values: list[float],
+) -> tuple[list[str], list[float]]:
+    by_bench = dict(zip(benches, values))
+    positive_benches = [
+        b for b in benches if b in baseline_by_bench and baseline_by_bench[b] > 0
+    ]
+    rel_values = [
+        (by_bench[b] / baseline_by_bench[b]) * 100.0 for b in positive_benches
+    ]
+    return positive_benches, rel_values
+
+
 def build_testsuite_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]:
     outputs: list[Path] = []
     path = input_dir / f"res-test-suite-ct-{arch}"
@@ -189,6 +238,12 @@ def build_testsuite_plots(input_dir: Path, output_dir: Path, arch: str) -> list[
 
     bench_order, values = parse_ct_file(path)
     benches = sort_bench_labels(bench_order)
+    baseline_o1 = {
+        b: values[b][("codegen", "clang_o1")]
+        for b in benches
+        if ("codegen", "clang_o1") in values.get(b, {})
+        and values[b][("codegen", "clang_o1")] > 0
+    }
 
     codegen_keys = [
         ("codegen", "tpde_old"),
@@ -198,56 +253,106 @@ def build_testsuite_plots(input_dir: Path, output_dir: Path, arch: str) -> list[
     ]
     codegen_benches = common_benches(benches, values, codegen_keys)
     if codegen_benches:
-        labels = ["geomean"] + codegen_benches
-        series = {
-            "tpde_old codegen": with_geomean(
-                [values[b][("codegen", "tpde_old")] for b in codegen_benches]
-            ),
-            "tpde codegen": with_geomean(
-                [values[b][("codegen", "tpde")] for b in codegen_benches]
-            ),
-            "clang_O0 codegen": with_geomean(
-                [values[b][("codegen", "clang_o0")] for b in codegen_benches]
-            ),
-            "clang_O1 codegen": with_geomean(
-                [values[b][("codegen", "clang_o1")] for b in codegen_benches]
-            ),
+        labels_abs = ["geomean"] + codegen_benches
+        raw_series = {
+            "tpde_old codegen": [
+                values[b][("codegen", "tpde_old")] for b in codegen_benches
+            ],
+            "tpde codegen": [values[b][("codegen", "tpde")] for b in codegen_benches],
+            "clang_O0 codegen": [
+                values[b][("codegen", "clang_o0")] for b in codegen_benches
+            ],
+            "clang_O1 codegen": [
+                values[b][("codegen", "clang_o1")] for b in codegen_benches
+            ],
+        }
+        series_abs = {
+            "tpde_old codegen": with_geomean(raw_series["tpde_old codegen"]),
+            "tpde codegen": with_geomean(raw_series["tpde codegen"]),
+            "clang_O0 codegen": with_geomean(raw_series["clang_O0 codegen"]),
+            "clang_O1 codegen": with_geomean(raw_series["clang_O1 codegen"]),
         }
         out = output_dir / f"ct_codegen_testsuite_{arch}.png"
         plot_grouped(
-            labels,
-            series,
+            labels_abs,
+            series_abs,
             f"Test-suite compile time: codegen comparison ({arch})",
             "Compile time",
             out,
             yscale="log",
         )
         outputs.append(out)
+
+        labels_rel, series_rel = build_relative_series(
+            codegen_benches,
+            baseline_o1,
+            raw_series,
+        )
+        if labels_rel:
+            out_rel = (
+                output_dir / f"ct_codegen_testsuite_relative_to_clang_o1_{arch}.png"
+            )
+            plot_grouped(
+                labels_rel,
+                series_rel,
+                f"Test-suite compile time: codegen relative to clang_O1 ({arch})",
+                "Compile time (% of clang_O1, clang_O1 = 100%)",
+                out_rel,
+                yscale="log",
+                hline=100.0,
+            )
+            outputs.append(out_rel)
+        else:
+            emit_missing("testsuite", arch, "cannot build relative codegen plot")
     else:
         emit_missing("testsuite", arch, "no common benchmarks for codegen comparison")
 
     tpde_cg_keys = [("tpde_cg", "tpde"), ("tpde_cg", "tpde_old")]
     tpde_cg_benches = common_benches(benches, values, tpde_cg_keys)
     if tpde_cg_benches:
-        labels = ["geomean"] + tpde_cg_benches
-        series = {
-            "tpde_cg tpde_old": with_geomean(
-                [values[b][("tpde_cg", "tpde_old")] for b in tpde_cg_benches]
-            ),
-            "tpde_cg tpde": with_geomean(
-                [values[b][("tpde_cg", "tpde")] for b in tpde_cg_benches]
-            ),
+        labels_abs = ["geomean"] + tpde_cg_benches
+        raw_series = {
+            "tpde_cg tpde_old": [
+                values[b][("tpde_cg", "tpde_old")] for b in tpde_cg_benches
+            ],
+            "tpde_cg tpde": [values[b][("tpde_cg", "tpde")] for b in tpde_cg_benches],
+        }
+        series_abs = {
+            "tpde_cg tpde_old": with_geomean(raw_series["tpde_cg tpde_old"]),
+            "tpde_cg tpde": with_geomean(raw_series["tpde_cg tpde"]),
         }
         out = output_dir / f"ct_tpde_cg_testsuite_{arch}.png"
         plot_grouped(
-            labels,
-            series,
+            labels_abs,
+            series_abs,
             f"Test-suite compile time: tpde_cg tpde vs tpde_old ({arch})",
             "Compile time",
             out,
             yscale="log",
         )
         outputs.append(out)
+
+        labels_rel, series_rel = build_relative_series(
+            tpde_cg_benches,
+            baseline_o1,
+            raw_series,
+        )
+        if labels_rel:
+            out_rel = (
+                output_dir / f"ct_tpde_cg_testsuite_relative_to_clang_o1_{arch}.png"
+            )
+            plot_grouped(
+                labels_rel,
+                series_rel,
+                f"Test-suite compile time: tpde_cg relative to clang_O1 ({arch})",
+                "Compile time (% of clang_O1, clang_O1 = 100%)",
+                out_rel,
+                yscale="log",
+                hline=100.0,
+            )
+            outputs.append(out_rel)
+        else:
+            emit_missing("testsuite", arch, "cannot build relative tpde_cg plot")
     else:
         emit_missing("testsuite", arch, "no common benchmarks for tpde_cg comparison")
 
@@ -268,18 +373,47 @@ def build_testsuite_plots(input_dir: Path, output_dir: Path, arch: str) -> list[
             for total, pl, spill in zip(tpde_analysis, tpde_pl, tpde_spill)
         ]
 
-        labels = ["geomean"] + analysis_benches
+        labels_abs = ["geomean"] + analysis_benches
         out = output_dir / f"ct_analysis_breakdown_testsuite_{arch}.png"
         plot_analysis_breakdown(
-            labels,
+            labels_abs,
             old_analysis,
             tpde_pl,
             tpde_spill,
             tpde_other,
             f"Test-suite compile time: analysis tpde vs tpde_old ({arch})",
+            "Compile time",
             out,
         )
         outputs.append(out)
+
+        rel_benches, old_rel = build_relative_list(
+            analysis_benches,
+            baseline_o1,
+            old_analysis,
+        )
+        _, pl_rel = build_relative_list(analysis_benches, baseline_o1, tpde_pl)
+        _, spill_rel = build_relative_list(analysis_benches, baseline_o1, tpde_spill)
+        _, other_rel = build_relative_list(analysis_benches, baseline_o1, tpde_other)
+        if rel_benches:
+            out_rel = (
+                output_dir
+                / f"ct_analysis_breakdown_testsuite_relative_to_clang_o1_{arch}.png"
+            )
+            plot_analysis_breakdown(
+                ["geomean"] + rel_benches,
+                old_rel,
+                pl_rel,
+                spill_rel,
+                other_rel,
+                f"Test-suite compile time: analysis relative to clang_O1 ({arch})",
+                "Compile time (% of clang_O1, clang_O1 = 100%)",
+                out_rel,
+                hline=100.0,
+            )
+            outputs.append(out_rel)
+        else:
+            emit_missing("testsuite", arch, "cannot build relative analysis plot")
     else:
         emit_missing(
             "testsuite",
@@ -306,23 +440,55 @@ def build_testsuite_plots(input_dir: Path, output_dir: Path, arch: str) -> list[
             if d > 0 and r > 0
         ]
         if positive_rows:
-            labels = ["geomean"] + [b for b, _, _ in positive_rows]
-            series = {
+            delta_benches = [b for b, _, _ in positive_rows]
+            labels_abs = ["geomean"] + delta_benches
+            raw_series = {
+                "tpde codegen - tpde_old codegen": [d for _, d, _ in positive_rows],
+                "clang LLVM_RA (O1)": [r for _, _, r in positive_rows],
+            }
+            series_abs = {
                 "tpde codegen - tpde_old codegen": with_geomean(
-                    [d for _, d, _ in positive_rows]
+                    raw_series["tpde codegen - tpde_old codegen"]
                 ),
-                "clang LLVM_RA (O1)": with_geomean([r for _, _, r in positive_rows]),
+                "clang LLVM_RA (O1)": with_geomean(raw_series["clang LLVM_RA (O1)"]),
             }
             out = output_dir / f"ct_codegen_delta_vs_llvm_ra_testsuite_{arch}.png"
             plot_grouped(
-                labels,
-                series,
+                labels_abs,
+                series_abs,
                 f"Test-suite: (tpde - tpde_old) codegen vs clang LLVM_RA ({arch})",
                 "Compile time",
                 out,
                 yscale="log",
             )
             outputs.append(out)
+
+            labels_rel, series_rel = build_relative_series(
+                delta_benches,
+                baseline_o1,
+                raw_series,
+            )
+            if labels_rel:
+                out_rel = (
+                    output_dir
+                    / f"ct_codegen_delta_vs_llvm_ra_testsuite_relative_to_clang_o1_{arch}.png"
+                )
+                plot_grouped(
+                    labels_rel,
+                    series_rel,
+                    f"Test-suite: codegen delta vs LLVM_RA relative to clang_O1 ({arch})",
+                    "Compile time (% of clang_O1, clang_O1 = 100%)",
+                    out_rel,
+                    yscale="log",
+                    hline=100.0,
+                )
+                outputs.append(out_rel)
+            else:
+                emit_missing(
+                    "testsuite",
+                    arch,
+                    "cannot build relative codegen-delta vs LLVM_RA plot",
+                )
         else:
             emit_missing(
                 "testsuite",
@@ -359,8 +525,15 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
     bench_o0 = sort_bench_labels(bench_o0)
 
     values_o1: dict[str, dict[tuple[str, str], float]] = {}
+    baseline_o1: dict[str, float] = {}
     if o1_path.exists():
         _, values_o1 = parse_ct_file(o1_path)
+        baseline_o1 = {
+            b: values_o1[b][("codegen", "clang")]
+            for b in values_o1
+            if ("codegen", "clang") in values_o1[b]
+            and values_o1[b][("codegen", "clang")] > 0
+        }
 
     if o1_path.exists():
         required = [
@@ -373,56 +546,115 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
             b for b in codegen_benches if ("codegen", "clang") in values_o1.get(b, {})
         ]
         if codegen_benches:
-            labels = ["geomean"] + codegen_benches
-            series = {
-                "tpde_old codegen": with_geomean(
-                    [values_o0[b][("codegen", "tpde_old")] for b in codegen_benches]
-                ),
-                "tpde codegen": with_geomean(
-                    [values_o0[b][("codegen", "tpde")] for b in codegen_benches]
-                ),
-                "clang_O0 codegen": with_geomean(
-                    [values_o0[b][("codegen", "clang")] for b in codegen_benches]
-                ),
-                "clang_O1 codegen": with_geomean(
-                    [values_o1[b][("codegen", "clang")] for b in codegen_benches]
-                ),
+            labels_abs = ["geomean"] + codegen_benches
+            raw_series = {
+                "tpde_old codegen": [
+                    values_o0[b][("codegen", "tpde_old")] for b in codegen_benches
+                ],
+                "tpde codegen": [
+                    values_o0[b][("codegen", "tpde")] for b in codegen_benches
+                ],
+                "clang_O0 codegen": [
+                    values_o0[b][("codegen", "clang")] for b in codegen_benches
+                ],
+                "clang_O1 codegen": [
+                    values_o1[b][("codegen", "clang")] for b in codegen_benches
+                ],
+            }
+            series_abs = {
+                "tpde_old codegen": with_geomean(raw_series["tpde_old codegen"]),
+                "tpde codegen": with_geomean(raw_series["tpde codegen"]),
+                "clang_O0 codegen": with_geomean(raw_series["clang_O0 codegen"]),
+                "clang_O1 codegen": with_geomean(raw_series["clang_O1 codegen"]),
             }
             out = output_dir / f"ct_codegen_spec_{arch}.png"
             plot_grouped(
-                labels,
-                series,
+                labels_abs,
+                series_abs,
                 f"SPEC compile time: codegen comparison ({arch})",
                 "Compile time",
                 out,
                 yscale="log",
             )
             outputs.append(out)
+
+            labels_rel, series_rel = build_relative_series(
+                codegen_benches,
+                baseline_o1,
+                raw_series,
+            )
+            if labels_rel:
+                out_rel = (
+                    output_dir / f"ct_codegen_spec_relative_to_clang_o1_{arch}.png"
+                )
+                plot_grouped(
+                    labels_rel,
+                    series_rel,
+                    f"SPEC compile time: codegen relative to clang_O1 ({arch})",
+                    "Compile time (% of clang_O1, clang_O1 = 100%)",
+                    out_rel,
+                    yscale="log",
+                    hline=100.0,
+                )
+                outputs.append(out_rel)
+            else:
+                emit_missing("spec", arch, "cannot build relative codegen plot")
         else:
             emit_missing("spec", arch, "no common benchmarks for codegen comparison")
 
     tpde_cg_keys = [("tpde_cg", "tpde"), ("tpde_cg", "tpde_old")]
     tpde_cg_benches = common_benches(bench_o0, values_o0, tpde_cg_keys)
     if tpde_cg_benches:
-        labels = ["geomean"] + tpde_cg_benches
-        series = {
-            "tpde_cg tpde_old": with_geomean(
-                [values_o0[b][("tpde_cg", "tpde_old")] for b in tpde_cg_benches]
-            ),
-            "tpde_cg tpde": with_geomean(
-                [values_o0[b][("tpde_cg", "tpde")] for b in tpde_cg_benches]
-            ),
+        labels_abs = ["geomean"] + tpde_cg_benches
+        raw_series = {
+            "tpde_cg tpde_old": [
+                values_o0[b][("tpde_cg", "tpde_old")] for b in tpde_cg_benches
+            ],
+            "tpde_cg tpde": [
+                values_o0[b][("tpde_cg", "tpde")] for b in tpde_cg_benches
+            ],
+        }
+        series_abs = {
+            "tpde_cg tpde_old": with_geomean(raw_series["tpde_cg tpde_old"]),
+            "tpde_cg tpde": with_geomean(raw_series["tpde_cg tpde"]),
         }
         out = output_dir / f"ct_tpde_cg_spec_{arch}.png"
         plot_grouped(
-            labels,
-            series,
+            labels_abs,
+            series_abs,
             f"SPEC compile time: tpde_cg tpde vs tpde_old ({arch})",
             "Compile time",
             out,
             yscale="log",
         )
         outputs.append(out)
+
+        if baseline_o1:
+            labels_rel, series_rel = build_relative_series(
+                tpde_cg_benches,
+                baseline_o1,
+                raw_series,
+            )
+            if labels_rel:
+                out_rel = (
+                    output_dir / f"ct_tpde_cg_spec_relative_to_clang_o1_{arch}.png"
+                )
+                plot_grouped(
+                    labels_rel,
+                    series_rel,
+                    f"SPEC compile time: tpde_cg relative to clang_O1 ({arch})",
+                    "Compile time (% of clang_O1, clang_O1 = 100%)",
+                    out_rel,
+                    yscale="log",
+                    hline=100.0,
+                )
+                outputs.append(out_rel)
+            else:
+                emit_missing("spec", arch, "cannot build relative tpde_cg plot")
+        else:
+            emit_missing(
+                "spec", arch, "missing clang_O1 baseline for relative tpde_cg plot"
+            )
     else:
         emit_missing("spec", arch, "no common benchmarks for tpde_cg comparison")
 
@@ -445,18 +677,56 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
             for total, pl, spill in zip(tpde_analysis, tpde_pl, tpde_spill)
         ]
 
-        labels = ["geomean"] + analysis_benches
+        labels_abs = ["geomean"] + analysis_benches
         out = output_dir / f"ct_analysis_breakdown_spec_{arch}.png"
         plot_analysis_breakdown(
-            labels,
+            labels_abs,
             old_analysis,
             tpde_pl,
             tpde_spill,
             tpde_other,
             f"SPEC compile time: analysis tpde vs tpde_old ({arch})",
+            "Compile time",
             out,
         )
         outputs.append(out)
+
+        if baseline_o1:
+            rel_benches, old_rel = build_relative_list(
+                analysis_benches,
+                baseline_o1,
+                old_analysis,
+            )
+            _, pl_rel = build_relative_list(analysis_benches, baseline_o1, tpde_pl)
+            _, spill_rel = build_relative_list(
+                analysis_benches, baseline_o1, tpde_spill
+            )
+            _, other_rel = build_relative_list(
+                analysis_benches, baseline_o1, tpde_other
+            )
+            if rel_benches:
+                out_rel = (
+                    output_dir
+                    / f"ct_analysis_breakdown_spec_relative_to_clang_o1_{arch}.png"
+                )
+                plot_analysis_breakdown(
+                    ["geomean"] + rel_benches,
+                    old_rel,
+                    pl_rel,
+                    spill_rel,
+                    other_rel,
+                    f"SPEC compile time: analysis relative to clang_O1 ({arch})",
+                    "Compile time (% of clang_O1, clang_O1 = 100%)",
+                    out_rel,
+                    hline=100.0,
+                )
+                outputs.append(out_rel)
+            else:
+                emit_missing("spec", arch, "cannot build relative analysis plot")
+        else:
+            emit_missing(
+                "spec", arch, "missing clang_O1 baseline for relative analysis plot"
+            )
     else:
         emit_missing("spec", arch, "no common benchmarks for analysis breakdown")
 
@@ -479,23 +749,62 @@ def build_spec_plots(input_dir: Path, output_dir: Path, arch: str) -> list[Path]
         ]
 
         if positive_rows:
-            labels = ["geomean"] + [b for b, _, _ in positive_rows]
-            series = {
+            delta_benches = [b for b, _, _ in positive_rows]
+            labels_abs = ["geomean"] + delta_benches
+            raw_series = {
+                "tpde codegen - tpde_old codegen": [d for _, d, _ in positive_rows],
+                "clang LLVM_RA (O0)": [r for _, _, r in positive_rows],
+            }
+            series_abs = {
                 "tpde codegen - tpde_old codegen": with_geomean(
-                    [d for _, d, _ in positive_rows]
+                    raw_series["tpde codegen - tpde_old codegen"]
                 ),
-                "clang LLVM_RA (O0)": with_geomean([r for _, _, r in positive_rows]),
+                "clang LLVM_RA (O0)": with_geomean(raw_series["clang LLVM_RA (O0)"]),
             }
             out = output_dir / f"ct_codegen_delta_vs_llvm_ra_spec_{arch}.png"
             plot_grouped(
-                labels,
-                series,
+                labels_abs,
+                series_abs,
                 f"SPEC: (tpde - tpde_old) codegen vs clang LLVM_RA ({arch})",
                 "Compile time",
                 out,
                 yscale="log",
             )
             outputs.append(out)
+
+            if baseline_o1:
+                labels_rel, series_rel = build_relative_series(
+                    delta_benches,
+                    baseline_o1,
+                    raw_series,
+                )
+                if labels_rel:
+                    out_rel = (
+                        output_dir
+                        / f"ct_codegen_delta_vs_llvm_ra_spec_relative_to_clang_o1_{arch}.png"
+                    )
+                    plot_grouped(
+                        labels_rel,
+                        series_rel,
+                        f"SPEC: codegen delta vs LLVM_RA relative to clang_O1 ({arch})",
+                        "Compile time (% of clang_O1, clang_O1 = 100%)",
+                        out_rel,
+                        yscale="log",
+                        hline=100.0,
+                    )
+                    outputs.append(out_rel)
+                else:
+                    emit_missing(
+                        "spec",
+                        arch,
+                        "cannot build relative codegen-delta vs LLVM_RA plot",
+                    )
+            else:
+                emit_missing(
+                    "spec",
+                    arch,
+                    "missing clang_O1 baseline for relative codegen-delta vs LLVM_RA plot",
+                )
         else:
             emit_missing(
                 "spec",
