@@ -1,1 +1,1 @@
- podman build --ssh default=$HOME/.ssh/id_ed25519 --build-arg CACHE_BUST=3 --no-cache -t myimage .
+DOCKER_BUILDKIT=1 docker build --ssh default=$HOME/.ssh/id_ed25519 --no-cache-filter tpde-src --build-arg CACHE_BUST=2 -t myimage .

@@ -61,7 +61,7 @@ RUN dnf install -y git openssh-clients
 RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan gitlab.db.in.tum.de >> ~/.ssh/known_hosts
 
 # Pin TPDE to a ref for reproducibility (branch or commit SHA)
-ARG TPDE_REF=salto
+ARG TPDE_REF=40eac2790498d2d267a5a8c4236c7fb06fc90e97
 
 RUN --mount=type=ssh \
     git clone --recursive git@gitlab.db.in.tum.de:tpde/tpde2.git /tpde && \
