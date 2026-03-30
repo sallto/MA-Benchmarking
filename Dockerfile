@@ -64,8 +64,8 @@ RUN mkdir -p -m 0700 ~/.ssh && ssh-keyscan gitlab.db.in.tum.de >> ~/.ssh/known_h
 ARG TPDE_REF=40eac2790498d2d267a5a8c4236c7fb06fc90e97
 
 RUN --mount=type=ssh \
-    git clone --recursive git@gitlab.db.in.tum.de:tpde/tpde2.git /tpde && \
-    cd /tpde && git checkout "${TPDE_REF}"
+    git clone --recursive https://github.com/sallto/tpde.git /tpde && \
+    cd /tpde
 
 # If you also need the old tpde
 RUN git clone --recursive https://github.com/tpde2/tpde.git /tpde-old

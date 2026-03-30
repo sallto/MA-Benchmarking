@@ -96,7 +96,7 @@ res-spec-raw-rt-o1-$(ARCH): latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-clang
 
 
 .PHONY: res-spec-rt
-res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH)
+res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH)
 
 ifeq ($(ARCH), aarch64)
 EXTRA_FLAGS="-Xclang -mlong-double-64 -g"
@@ -136,7 +136,7 @@ latex/bench-res/res-test-suite-rt-text-O0-$(ARCH): latex/bench-res/res-test-suit
 	cd testsuite/llvm-test-suite; ../run_benches_O0.sh | tee $(ROOT)/$@
 
 .PHONY: bench-res-rt
-bench-res-rt: latex/bench-res/res-test-suite-rt-text-O0-$(ARCH) latex/bench-res/res-test-suite-rt-text-$(ARCH)
+bench-res-rt: latex/bench-res/res-test-suite-rt-text-$(ARCH) latex/bench-res/res-test-suite-rt-text-O0-$(ARCH)
 
 latex/figures_$(ARCH).pdf:: latex/bench-res/res-total-tpcdsSf1-$(ARCH) latex/bench-res/res-test-suite-ct-$(ARCH) latex/bench-res/res-test-suite-rt-text-$(ARCH)
 	cd latex && make all
