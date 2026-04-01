@@ -273,7 +273,7 @@ def parse_jsons(folder_path):
 
 for (ty, folder_path) in [('clang', clang_path), ('tpde', tpde_path),('tpde_old', tpde_old_path)]:
     res = []
-    for i in range(1, 2):
+    for i in range(1, 6):
         tmp_path = folder_path
         if (tmp_path[-1] != '/'):
             tmp_path += '/'

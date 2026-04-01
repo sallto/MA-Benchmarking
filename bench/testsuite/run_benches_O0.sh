@@ -24,7 +24,7 @@ for ((i=0; i<3; ++i)); do
 	TPDE_SIZE=`echo "$TMP" | grep "size..text" | awk "{sum +=\\\$2} END {print sum}"`
 done
 for ((i=0; i<3; ++i)); do
-	TMP=`lit -v O0_build_tpde_old/MultiSource/Benchmarks/$name -j 1`
+	TMP=`lit -v O0_build_tpde-old/MultiSource/Benchmarks/$name -j 1`
 	TPDE_OLD_TIME=`echo "$TMP" | grep "exec_time" | awk "{sum += \\\$2} END {print ($TPDE_OLD_TIME+sum)}"`
 	TPDE_OLD_SIZE=`echo "$TMP" | grep "size..text" | awk "{sum +=\\\$2} END {print sum}"`
 done

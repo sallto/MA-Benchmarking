@@ -31,7 +31,7 @@ TPDE_OLD_CFG_PATH="${SPEC_DIR}/config/${ARCH}-tpde-old-ct.cfg"
 BENCH_NUMBERS=("600" "602" "605" "620" "623" "625" "631" "641" "648" "657")
 BENCH_NAMES=("perlbench" "gcc" "mcf" "omnetpp" "xalancbmk" "x264" "deepsjeng" "leela" "exchange2" "xz")
 
-RUN_COUNT=3
+RUN_COUNT=5
 
 rm -f "${SCRIPT_DIR}/$OUT_FILE"
 

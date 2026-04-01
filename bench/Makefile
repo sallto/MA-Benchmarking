@@ -52,6 +52,14 @@ spec/config/$(ARCH)-%-rt.cfg: spec_config/$(ARCH)-%-rt.cfg spec_config/$(ARCH)-b
 	echo "%define artifact_dir \"$(ROOT)\"" >> spec/config/$(ARCH)-$*-rt.cfg
 	cat spec_config/$(ARCH)-base.cfg >> spec/config/$(ARCH)-$*-rt.cfg
 
+latex/bench-res/res-spec-raw-ct-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/config/$(ARCH)-tpde-ct.cfg spec/config/$(ARCH)-tpde-old-ct.cfg | spec latex/bench-res 
+	# create build directories
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct.cfg  --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-ct.cfg --action=buildsetup intspeed
+	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-old-ct.cfg --action=buildsetup intspeed
+	-rm latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH)
+	$(ROOT)/run_ct_bench.sh "$(ROOT)/spec" $(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) true -O0
+
 latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/config/$(ARCH)-tpde-ct.cfg spec/config/$(ARCH)-tpde-old-ct.cfg | spec latex/bench-res 
 	# create build directories
 	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct.cfg --define o1ir --action=buildsetup intspeed
@@ -96,7 +104,7 @@ res-spec-raw-rt-o1-$(ARCH): latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-clang
 
 
 .PHONY: res-spec-rt
-res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH)
+res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH) res-spec-raw-rt-$(ARCH) latex/bench-res/res-spec-raw-ct-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) latex/bench-res/res-spec-raw-ct-$(ARCH)
 
 ifeq ($(ARCH), aarch64)
 EXTRA_FLAGS="-Xclang -mlong-double-64 -g"
