@@ -57,8 +57,8 @@ latex/bench-res/res-spec-raw-ct-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/c
 	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-clang-ct.cfg  --action=buildsetup intspeed
 	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-ct.cfg --action=buildsetup intspeed
 	$(ROOT)/spec_cmd.sh runcpu --config=$(ARCH)-tpde-old-ct.cfg --action=buildsetup intspeed
-	-rm latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH)
-	$(ROOT)/run_ct_bench.sh "$(ROOT)/spec" $(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) true -O0
+	-rm latex/bench-res/res-spec-raw-ct-$(ARCH)
+	$(ROOT)/run_ct_bench.sh "$(ROOT)/spec" $(ARCH) latex/bench-res/res-spec-raw-ct-$(ARCH) true -O0
 
 latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH): spec/config/$(ARCH)-clang-ct.cfg spec/config/$(ARCH)-tpde-ct.cfg spec/config/$(ARCH)-tpde-old-ct.cfg | spec latex/bench-res 
 	# create build directories
