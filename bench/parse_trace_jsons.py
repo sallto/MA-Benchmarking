@@ -280,7 +280,7 @@ for (ty, folder_path) in [('clang', clang_path), ('tpde', tpde_path),('tpde_old'
         tmp_path += "time_trace." + str(i)
         res.append(parse_jsons(tmp_path))
 
-    res.sort(key=lambda r: r["total"])
-    #res = res[1:-1]
+    res.sort(key=lambda r: r["codegen"])
+    res = res[1:-1]
     for k in sorted(res[0].keys()):
         print(benchmark, k, ty, sum(r[k] for r in res) / len(res))

@@ -102,6 +102,8 @@ res-spec-raw-rt-o1ir-$(ARCH): latex/bench-res/res-spec-raw-rt-o1ir-$(ARCH)-tpde 
 .PHONY: res-spec-raw-rt-o1-$(ARCH)
 res-spec-raw-rt-o1-$(ARCH): latex/bench-res/res-spec-raw-rt-o1-$(ARCH)-clang
 
+.PHONY: res-spec-ct
+res-spec-ct: latex/bench-res/res-spec-raw-ct-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) latex/bench-res/res-spec-raw-ct-$(ARCH)
 
 .PHONY: res-spec-rt
 res-spec-rt: res-spec-raw-rt-o1ir-$(ARCH) res-spec-raw-rt-o1-$(ARCH) res-spec-raw-rt-$(ARCH) latex/bench-res/res-spec-raw-ct-o1-$(ARCH) latex/bench-res/res-spec-raw-ct-o1ir-$(ARCH) latex/bench-res/res-spec-raw-ct-$(ARCH)
